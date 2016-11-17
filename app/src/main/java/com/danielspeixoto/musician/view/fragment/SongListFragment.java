@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.IListSongPresenter;
-import com.danielspeixoto.musician.presenter.ListSongPresenter;
-import com.danielspeixoto.musician.view.ISongView;
+import com.danielspeixoto.musician.presenter.AllSongsPresenter;
+import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
+import com.danielspeixoto.musician.view.module.IListSongView;
 import com.danielspeixoto.musician.view.adapter.RecyclerAdapter;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class SongListFragment extends BaseFragment implements ISongView {
+public class SongListFragment extends BaseFragment implements IListSongView {
 
-    private IListSongPresenter mSongPresenter;
+    private IAllSongsPresenter mAllSongsPresenter;
     private RecyclerAdapter mAdapter;
 
     @Nullable
@@ -28,13 +28,12 @@ public class SongListFragment extends BaseFragment implements ISongView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.song_list_fragment, container, false);
 
-        mSongPresenter = new ListSongPresenter(this, getContext());
+        mAllSongsPresenter = new AllSongsPresenter(this, getContext());
 
         RecyclerView songList = (RecyclerView) view.findViewById(R.id.song_list);
         mAdapter = new RecyclerAdapter(getActivity());
         songList.setAdapter(mAdapter);
         songList.setLayoutManager(new LinearLayoutManager(getContext()));
-        songList.setAdapter(mAdapter);
 
         return view;
     }
@@ -42,32 +41,17 @@ public class SongListFragment extends BaseFragment implements ISongView {
     @Override
     public void onResume() {
         super.onResume();
+        mAdapter.removeAll();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mSongPresenter.getAll();
+                mAllSongsPresenter.selectAllSongs();
             }
         }).start();
     }
 
     @Override
-    public void addSong(Song song) {
+    public void addSongToList(Song song) {
         mAdapter.addSong(song);
-        updateList();
-    }
-
-    @Override
-    public void removeSong(int index) {
-        mAdapter.removeSong(index);
-        updateList();
-    }
-
-    private void updateList() {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.notifyDataSetChanged();
-            }
-        });
     }
 }

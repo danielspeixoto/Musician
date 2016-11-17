@@ -15,8 +15,8 @@ public class Song implements Comparable<Song>{
 
     public Song(int id, String name, String artist) {
         this.id = id;
-        setName(name);
-        setArtist(artist);
+        this.name = name;
+        this.artist = artist;
     }
 
     public Song(int id,
@@ -27,8 +27,8 @@ public class Song implements Comparable<Song>{
                 int bpm,
                 String beatsPerBar) {
         this.id = id;
-        setName(name);
-        setArtist(artist);
+        this.name = name;
+        this.artist = artist;
         this.comments = comments;
         this.level = level;
         this.bpm = bpm;
@@ -41,8 +41,8 @@ public class Song implements Comparable<Song>{
                 int level,
                 int bpm,
                 String beatsPerBar) {
-        setName(name);
-        setArtist(artist);
+        this.name = name;
+        this.artist = artist;
         this.comments = comments;
         this.level = level;
         this.bpm = bpm;
@@ -58,9 +58,7 @@ public class Song implements Comparable<Song>{
     }
 
     public void setName(String name) {
-        if (name.length() < 40) {
-            this.name = name;
-        }
+        this.name = name;
     }
 
     public String getArtist() {
@@ -68,9 +66,7 @@ public class Song implements Comparable<Song>{
     }
 
     public void setArtist(String artist) {
-        if (artist.length() < 40) {
-            this.artist = artist;
-        }
+        this.artist = artist;
     }
 
     public String getComments() {

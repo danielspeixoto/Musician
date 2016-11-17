@@ -21,7 +21,6 @@ import butterknife.ButterKnife;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder> {
 
     ArrayList<Song> mSongs = new ArrayList<>();
-
     private Activity mActivity;
 
     public RecyclerAdapter(Activity mActivity) {
@@ -46,8 +45,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
         updateList();
     }
 
-    public void removeSong(int index) {
-        mSongs.remove(index);
+    public void removeAll() {
+        mSongs.clear();
         updateList();
     }
 
@@ -67,10 +66,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
 
     public class Holder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.songName)
-        TextView songName;
-        @BindView(R.id.songArtist)
-        TextView songArtist;
+        @BindView(R.id.songName) TextView songName;
+        @BindView(R.id.songArtist) TextView songArtist;
 
         public Holder(View itemView) {
             super(itemView);
