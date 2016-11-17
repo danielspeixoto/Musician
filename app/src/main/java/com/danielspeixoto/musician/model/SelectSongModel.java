@@ -4,26 +4,27 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.danielspeixoto.musician.model.module.ISelectSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.IReadSongPresenter;
+import com.danielspeixoto.musician.presenter.module.ISelectSongPresenter;
 import com.danielspeixoto.musician.util.Contract;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class ReadSongModel implements IReadSongModel, Contract {
+public class SelectSongModel implements ISelectSongModel, Contract {
 
     private final DatabaseHandler mDBHandler;
-    private final IReadSongPresenter mReadSongPresenter;
+    private final ISelectSongPresenter mSelectSongPresenter;
 
-    public ReadSongModel(IReadSongPresenter mReadSongPresenter, Context mContext) {
+    public SelectSongModel(ISelectSongPresenter mSelectSongPresenter, Context mContext) {
         this.mDBHandler = new DatabaseHandler(mContext);
-        this.mReadSongPresenter = mReadSongPresenter;
+        this.mSelectSongPresenter = mSelectSongPresenter;
     }
 
     @Override
-    public void getRow(int index) {
+    public void selectSong(int index) {
         Song song;
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
@@ -52,33 +53,8 @@ public class ReadSongModel implements IReadSongModel, Contract {
                     c.getString(c.getColumnIndex(SongColumns.BEATS_PER_BAR))
             );
             c.close();
-            mReadSongPresenter.onSongReceived(song);
+            mSelectSongPresenter.onSongReceived(song);
         }
     }
 
-    @Override
-    public void getAll() {
-        SQLiteDatabase db = mDBHandler.getReadableDatabase();
-        String[] projection = {
-                SongColumns._ID,
-                SongColumns.NAME,
-                SongColumns.ARTIST
-        };
-        Cursor c = db.query(SongColumns.TABLE,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                SongColumns.NAME);
-        if (c.moveToFirst()) {
-            do {
-                Song song = new Song(c.getInt(c.getColumnIndex(SongColumns._ID)),
-                        c.getString(c.getColumnIndex(SongColumns.NAME)),
-                        c.getString(c.getColumnIndex(SongColumns.ARTIST)));
-                mReadSongPresenter.onSongReceived(song);
-            } while (c.moveToNext());
-            c.close();
-        }
-    }
 }
