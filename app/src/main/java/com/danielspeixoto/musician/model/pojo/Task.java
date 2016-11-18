@@ -16,6 +16,9 @@ public class Task extends Contract.TaskColumns {
     private String description;
     private ArrayList<ToDo> toDos;
 
+    public Task() {
+    }
+
     public Task(int id, String name, String description, ArrayList<ToDo> toDos) {
         this.id = id;
         this.name = name;

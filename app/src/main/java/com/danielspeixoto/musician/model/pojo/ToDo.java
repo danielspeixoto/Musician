@@ -14,6 +14,9 @@ public class ToDo extends Contract.ToDoColumns {
     private String description;
     private boolean isFinished;
 
+    public ToDo() {
+    }
+
     public ToDo(int id, int taskId, String description, boolean isFinished) {
         this.id = id;
         this.taskId = taskId;
