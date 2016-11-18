@@ -44,8 +44,8 @@ public class SelectSongModel implements ISelectSongModel {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            cursor.close();
             mSelectSongPresenter.onSongReceived(new Song(cursor));
+            cursor.close();
         }
     }
 
