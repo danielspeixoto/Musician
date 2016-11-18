@@ -14,7 +14,6 @@ import com.danielspeixoto.musician.presenter.AllSongsPresenter;
 import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
 import com.danielspeixoto.musician.view.adapter.SongRecyclerAdapter;
 import com.danielspeixoto.musician.view.module.IListSongView;
-
 /**
  * Created by danielspeixoto on 13/11/16.
  */
