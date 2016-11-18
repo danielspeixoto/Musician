@@ -7,12 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import com.danielspeixoto.musician.model.module.ISelectSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.ISelectSongPresenter;
+import com.danielspeixoto.musician.util.Contract;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class SelectSongModel implements ISelectSongModel {
+public class SelectSongModel implements ISelectSongModel, Contract {
 
     private final DatabaseHandler mDBHandler;
     private final ISelectSongPresenter mSelectSongPresenter;
@@ -24,26 +25,28 @@ public class SelectSongModel implements ISelectSongModel {
 
     @Override
     public void selectSong(int index) {
+        Song song;
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
-                Song._ID,
-                Song.NAME,
-                Song.ARTIST,
-                Song.COMMENTS,
-                Song.LEVEL,
-                Song.BPM,
-                Song.BEATS_PER_BAR
+                SongColumns._ID,
+                SongColumns.NAME,
+                SongColumns.ARTIST,
+                SongColumns.COMMENTS,
+                SongColumns.LEVEL,
+                SongColumns.BPM,
+                SongColumns.BEATS_PER_BAR
         };
-        Cursor cursor = db.query(Song.TABLE,
+        Cursor cursor = db.query(SongColumns.TABLE,
                 projection,
-                Song._ID + " = ?", // Where clause
+                SongColumns._ID + " = ?", // Where clause
                 new String[]{Integer.toString(index)}, // Passing the index as an array
                 null,
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            mSelectSongPresenter.onSongReceived(new Song(cursor));
+            song = new Song(cursor);
             cursor.close();
+            mSelectSongPresenter.onSongReceived(song);
         }
     }
 

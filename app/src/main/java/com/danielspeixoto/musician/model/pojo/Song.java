@@ -38,5 +38,6 @@ public class Song extends Contract.SongColumns {
                 cursor.getInt(cursor.getColumnIndex(BPM)) : 0;
         beatsPerBar = cursor.getColumnIndex(BEATS_PER_BAR) != -1 ?
                 cursor.getString(cursor.getColumnIndex(BEATS_PER_BAR)) : null;
+
     }
 }
