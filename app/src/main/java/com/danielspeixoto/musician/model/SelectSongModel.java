@@ -25,7 +25,6 @@ public class SelectSongModel implements ISelectSongModel {
 
     @Override
     public void selectSong(int index) {
-        Song song;
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 Song._ID,
