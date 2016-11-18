@@ -12,8 +12,8 @@ import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.AllSongsPresenter;
 import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
+import com.danielspeixoto.musician.view.adapter.SongRecyclerAdapter;
 import com.danielspeixoto.musician.view.module.IListSongView;
-import com.danielspeixoto.musician.view.adapter.RecyclerAdapter;
 
 /**
  * Created by danielspeixoto on 13/11/16.
@@ -21,7 +21,7 @@ import com.danielspeixoto.musician.view.adapter.RecyclerAdapter;
 public class SongListFragment extends BaseFragment implements IListSongView {
 
     private IAllSongsPresenter mAllSongsPresenter;
-    private RecyclerAdapter mAdapter;
+    private SongRecyclerAdapter mAdapter;
 
     @Nullable
     @Override
@@ -31,7 +31,7 @@ public class SongListFragment extends BaseFragment implements IListSongView {
         mAllSongsPresenter = new AllSongsPresenter(this, getContext());
 
         RecyclerView songList = (RecyclerView) view.findViewById(R.id.song_list);
-        mAdapter = new RecyclerAdapter(getActivity());
+        mAdapter = new SongRecyclerAdapter(getActivity());
         songList.setAdapter(mAdapter);
         songList.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -52,6 +52,6 @@ public class SongListFragment extends BaseFragment implements IListSongView {
 
     @Override
     public void addSongToList(Song song) {
-        mAdapter.addSong(song);
+        mAdapter.addItem(song);
     }
 }

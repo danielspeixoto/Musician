@@ -15,7 +15,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.EditSongActivity"
+            android:name=".view.activity.UpdateSongActivity"
+            android:parentActivityName=".view.activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.danielspeixoto.musician.view.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".view.activity.InsertSongActivity"
             android:parentActivityName=".view.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

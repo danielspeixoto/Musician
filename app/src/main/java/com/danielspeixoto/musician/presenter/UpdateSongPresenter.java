@@ -15,8 +15,7 @@ public class UpdateSongPresenter implements IUpdateSongPresenter {
     private IUpdateSongModel mUpdateSongModel;
 
     public UpdateSongPresenter(Context mContext) {
-        this.mUpdateSongModel = new UpdateSongModel(this, mContext);
-
+        this.mUpdateSongModel = new UpdateSongModel(mContext);
     }
 
     @Override

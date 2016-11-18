@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.editSong:
-                startActivity(new Intent(this, EditSongActivity.class));
+                startActivity(new Intent(this, InsertSongActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

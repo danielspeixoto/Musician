@@ -7,13 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import com.danielspeixoto.musician.model.module.ISelectAllSongsModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
-import com.danielspeixoto.musician.util.Contract;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
  * Created by danielspeixoto on 17/11/16.
  */
-public class SelectAllSongsModel implements ISelectAllSongsModel, Contract {
+public class SelectAllSongsModel implements ISelectAllSongsModel {
 
     private final DatabaseHandler mDBHandler;
     private final IAllSongsPresenter mSelectAllSongsPresenter;
@@ -27,25 +26,22 @@ public class SelectAllSongsModel implements ISelectAllSongsModel, Contract {
     public void selectAllSongs() {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
-                SongColumns._ID,
-                SongColumns.NAME,
-                SongColumns.ARTIST
+                Song._ID,
+                Song.NAME,
+                Song.ARTIST
         };
-        Cursor c = db.query(SongColumns.TABLE,
+        Cursor cursor = db.query(Song.TABLE,
                 projection,
                 null,
                 null,
                 null,
                 null,
-                SongColumns.NAME);
-        if (c.moveToFirst()) {
+                Song.NAME);
+        if (cursor.moveToFirst()) {
             do {
-                Song song = new Song(c.getInt(c.getColumnIndex(SongColumns._ID)),
-                        c.getString(c.getColumnIndex(SongColumns.NAME)),
-                        c.getString(c.getColumnIndex(SongColumns.ARTIST)));
-                mSelectAllSongsPresenter.onReceivingSongs(song);
-            } while (c.moveToNext());
-            c.close();
+                mSelectAllSongsPresenter.onReceivingSongs(new Song(cursor));
+            } while (cursor.moveToNext());
+            cursor.close();
         }
     }
 }

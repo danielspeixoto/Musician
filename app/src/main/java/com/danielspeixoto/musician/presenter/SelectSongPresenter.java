@@ -19,7 +19,6 @@ public class SelectSongPresenter implements ISelectSongPresenter {
     public SelectSongPresenter(ISelectSongView mSelectSongView, Context mContext) {
         this.mSelectSongView = mSelectSongView;
         this.mSelectSongModel = new SelectSongModel(this, mContext);
-
     }
 
     @Override

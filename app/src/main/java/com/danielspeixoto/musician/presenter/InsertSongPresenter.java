@@ -15,8 +15,7 @@ public class InsertSongPresenter implements IInsertSongPresenter {
     private IInsertSongModel mInsertSongModel;
 
     public InsertSongPresenter(Context mContext) {
-        this.mInsertSongModel = new InsertSongModel(this, mContext);
-
+        this.mInsertSongModel = new InsertSongModel(mContext);
     }
 
     @Override
