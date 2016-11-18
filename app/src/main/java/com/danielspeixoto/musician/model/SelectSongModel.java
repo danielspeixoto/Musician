@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.danielspeixoto.musician.model.module.ISelectSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.ISelectSongPresenter;
+import com.danielspeixoto.musician.util.Contract;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
@@ -43,9 +44,8 @@ public class SelectSongModel implements ISelectSongModel {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            song = new Song(cursor);
             cursor.close();
-            mSelectSongPresenter.onSongReceived(song);
+            mSelectSongPresenter.onSongReceived(new Song(cursor));
         }
     }
 
