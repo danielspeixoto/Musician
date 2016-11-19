@@ -1,40 +1,41 @@
 package com.danielspeixoto.musician.view.adapter;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
+import com.danielspeixoto.musician.view.module.IListView;
+
 import java.util.ArrayList;
+
+import lombok.Getter;
 
 /**
  * Created by danielspeixoto on 17/11/16.
  */
-public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements IListView {
 
-    ArrayList mData = new ArrayList<>();
-    private Activity mActivity;
+    @Getter
+    protected AppCompatActivity activity;
+    protected ISelectAllPresenter mSelectAllPresenter;
+    protected ArrayList mData = new ArrayList<>();
 
-    public BaseRecyclerAdapter(Activity mActivity) {
-        this.mActivity = mActivity;
+    public BaseRecyclerAdapter(AppCompatActivity activity) {
+        this.activity = activity;
     }
 
+    @Override
     public void addItem(Object object) {
         mData.add(object);
-        updateList();
+        activity.runOnUiThread(() -> notifyDataSetChanged());
     }
 
-    public void removeAll() {
+    public void refreshData() {
         mData.clear();
-        updateList();
-    }
-
-    private void updateList() {
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                notifyDataSetChanged();
-            }
-        });
+        mSelectAllPresenter.selectAll();
+        notifyDataSetChanged();
     }
 
     @Override

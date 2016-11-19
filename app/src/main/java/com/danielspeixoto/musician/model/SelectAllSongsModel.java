@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.danielspeixoto.musician.model.module.ISelectAllSongsModel;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
+import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
@@ -15,9 +15,9 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class SelectAllSongsModel implements ISelectAllSongsModel {
 
     private final DatabaseHandler mDBHandler;
-    private final IAllSongsPresenter mSelectAllSongsPresenter;
+    private final ISelectAllPresenter mSelectAllSongsPresenter;
 
-    public SelectAllSongsModel(IAllSongsPresenter mSelectAllSongsPresenter, Context mContext) {
+    public SelectAllSongsModel(ISelectAllPresenter mSelectAllSongsPresenter, Context mContext) {
         this.mDBHandler = new DatabaseHandler(mContext);
         this.mSelectAllSongsPresenter = mSelectAllSongsPresenter;
     }
@@ -39,7 +39,7 @@ public class SelectAllSongsModel implements ISelectAllSongsModel {
                 Song.NAME);
         if (cursor.moveToFirst()) {
             do {
-                mSelectAllSongsPresenter.onReceivingSongs(new Song(cursor));
+                mSelectAllSongsPresenter.onReceiving(new Song(cursor));
             } while (cursor.moveToNext());
             cursor.close();
         }

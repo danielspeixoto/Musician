@@ -19,7 +19,7 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = getIntent().getIntExtra(Song._ID, -1);
+        id = getIntent().getIntExtra(Song._ID, 1);
         new SelectSongPresenter(this, this).selectSong(id);
     }
 
@@ -27,17 +27,23 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
     public void saveSong(View view) {
         super.saveSong(view);
         song.setId(id);
-        new UpdateSongPresenter(this).updateSong(song);
+        new UpdateSongPresenter(this, this).updateSong(song);
+        finish();
     }
 
     @Override
     public void fillData(Song song) {
         nameEdit.setText(song.getName());
         artistEdit.setText(song.getArtist());
-        bpmEdit.setText(song.getBpm());
         beatsPerBarEdit.setText(song.getBeatsPerBar());
         commentsEdit.setText(song.getComments());
         levelSeek.setProgress(song.getLevel());
+        if (song.getBpm() != 0) {
+            bpmEdit.setText(Integer.toString(song.getBpm()));
+        }
+        if (song.getVideoPath() != null) {
+            setVideoView(song.getVideoPath());
+        }
     }
 
 }
