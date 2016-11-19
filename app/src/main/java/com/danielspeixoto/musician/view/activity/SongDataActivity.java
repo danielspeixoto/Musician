@@ -19,7 +19,6 @@ import butterknife.ButterKnife;
  */
 public abstract class SongDataActivity extends BaseActivity implements IToastView {
 
-    public static final String NO_TEXT = "";
     protected Song song = new Song();
 
     @BindView(R.id.nameEdit)
@@ -48,7 +47,7 @@ public abstract class SongDataActivity extends BaseActivity implements IToastVie
         song.setComments(commentsEdit.getText().toString());
         song.setLevel(levelSeek.getProgress());
         song.setBeatsPerBar(beatsPerBarEdit.getText().toString());
-        if (!bpmEdit.getText().toString().equals(NO_TEXT)) {
+        if (!bpmEdit.getText().toString().equals(EMPTY_STRING)) {
             song.setBpm(Integer.parseInt((bpmEdit.getText().toString())));
         }
     }

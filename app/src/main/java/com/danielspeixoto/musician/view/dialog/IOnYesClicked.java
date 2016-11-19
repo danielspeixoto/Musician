@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.module;
+package com.danielspeixoto.musician.view.dialog;
 
 /**
  * Created by danielspeixoto on 18/11/16.

@@ -28,16 +28,19 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
         super.saveSong(view);
         song.setId(id);
         new UpdateSongPresenter(this, this).updateSong(song);
+        finish();
     }
 
     @Override
     public void fillData(Song song) {
         nameEdit.setText(song.getName());
         artistEdit.setText(song.getArtist());
-        bpmEdit.setText(Integer.toString(song.getBpm()));
         beatsPerBarEdit.setText(song.getBeatsPerBar());
         commentsEdit.setText(song.getComments());
         levelSeek.setProgress(song.getLevel());
+        if (song.getBpm() != 0) {
+            bpmEdit.setText(Integer.toString(song.getBpm()));
+        }
     }
 
 }

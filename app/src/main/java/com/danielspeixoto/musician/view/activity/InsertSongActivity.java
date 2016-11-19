@@ -13,5 +13,6 @@ public class InsertSongActivity extends SongDataActivity {
     public void saveSong(View view) {
         super.saveSong(view);
         new InsertSongPresenter(this, this).insertSong(song);
+        finish();
     }
 }

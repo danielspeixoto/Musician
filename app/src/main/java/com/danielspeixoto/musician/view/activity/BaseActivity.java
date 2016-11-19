@@ -9,6 +9,8 @@ import android.view.MenuItem;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected static final String EMPTY_STRING = "";
+
     public final String TAG = getClass().getSimpleName();
 
     @Override

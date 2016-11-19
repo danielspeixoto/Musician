@@ -36,7 +36,7 @@ public class EditDeleteDialog extends DialogFragment {
                             final int id = getArguments().getInt(Song._ID);
                             switch (which) {
                                 case 0:
-                                    Intent intent = new Intent(getActivity().getApplicationContext(), UpdateSongActivity.class);
+                                    Intent intent = new Intent(getActivity(), UpdateSongActivity.class);
                                     intent.putExtra(Song._ID, id);
                                     startActivity(intent);
                                     break;

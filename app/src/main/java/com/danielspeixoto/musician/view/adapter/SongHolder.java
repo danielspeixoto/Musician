@@ -1,5 +1,6 @@
 package com.danielspeixoto.musician.view.adapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.view.activity.SongInfoActivity;
 import com.danielspeixoto.musician.view.dialog.EditDeleteDialog;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 
@@ -39,6 +41,13 @@ public class SongHolder extends RecyclerView.ViewHolder implements IDeleteItemVi
         bundle.putInt(Song._ID, id);
         dialog.setArguments(bundle);
         dialog.show(mAdapter.getActivity().getSupportFragmentManager(), dialog.TAG);
+    }
+
+    @OnClick(R.id.itemLayout)
+    public void onItemClicked() {
+        Intent intent = new Intent(mAdapter.getActivity(), SongInfoActivity.class);
+        intent.putExtra(Song._ID, id);
+        mAdapter.getActivity().startActivity(intent);
     }
 
     public void setId(int id) {
