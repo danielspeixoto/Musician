@@ -32,7 +32,8 @@ public class SelectSongModel implements ISelectSongModel {
                 Song.COMMENTS,
                 Song.LEVEL,
                 Song.BPM,
-                Song.BEATS_PER_BAR
+                Song.BEATS_PER_BAR,
+                Song.VIDEO_PATH
         };
         Cursor cursor = db.query(Song.TABLE,
                 projection,

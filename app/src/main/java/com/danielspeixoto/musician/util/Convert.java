@@ -18,6 +18,7 @@ public class Convert {
         values.put(Song.LEVEL, song.getLevel());
         values.put(Song.BPM, song.getBpm());
         values.put(Song.BEATS_PER_BAR, song.getBeatsPerBar());
+        values.put(Song.VIDEO_PATH, song.getVideoPath());
         return values;
     }
 }

@@ -29,6 +29,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + Song.COMMENTS + " TEXT, "
                 + Song.LEVEL + " INTEGER, "
                 + Song.BPM + " INTEGER, "
+                + Song.VIDEO_PATH + " VARCHAR(455), "
                 + Song.BEATS_PER_BAR + " VARCHAR(15))");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + Task.TABLE + " ("
                 + Task._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

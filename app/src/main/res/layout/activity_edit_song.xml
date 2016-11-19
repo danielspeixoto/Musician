@@ -86,6 +86,36 @@
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/pickVideoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Add Video" />
+
+            <RelativeLayout
+                android:id="@+id/videoContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <VideoView
+                    android:id="@+id/videoView"
+                    android:layout_width="240dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center" />
+
+                <ImageButton
+                    android:id="@+id/deleteVideoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/ic_menu_close_clear_cancel"
+                    android:cropToPadding="false" />
+
+            </RelativeLayout>
+
             <EditText
                 android:id="@+id/commentsEdit"
                 android:layout_width="match_parent"

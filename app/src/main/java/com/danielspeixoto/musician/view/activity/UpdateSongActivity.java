@@ -41,6 +41,9 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
         if (song.getBpm() != 0) {
             bpmEdit.setText(Integer.toString(song.getBpm()));
         }
+        if (song.getVideoPath() != null) {
+            setVideoView(song.getVideoPath());
+        }
     }
 
 }
