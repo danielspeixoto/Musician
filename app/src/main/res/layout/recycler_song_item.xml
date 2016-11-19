@@ -5,6 +5,7 @@
     android:background="?android:selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
+    android:onClick="onOptionsButtonPressed"
     android:orientation="horizontal"
     android:padding="5dp">
 

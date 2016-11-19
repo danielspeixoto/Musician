@@ -8,4 +8,6 @@ import com.danielspeixoto.musician.model.pojo.Song;
 public interface IUpdateSongPresenter {
 
     void updateSong(Song song);
+
+    void onSongUpdated();
 }

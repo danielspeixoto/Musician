@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.danielspeixoto.musician.model.module.IUpdateSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.presenter.module.IUpdateSongPresenter;
 import com.danielspeixoto.musician.util.Convert;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
@@ -14,8 +15,10 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class UpdateSongModel implements IUpdateSongModel {
 
     private final DatabaseHandler mDBHandler;
+    private final IUpdateSongPresenter mUpdadeSongPresenter;
 
-    public UpdateSongModel(Context mContext) {
+    public UpdateSongModel(IUpdateSongPresenter mUpdadeSongPresenter, Context mContext) {
+        this.mUpdadeSongPresenter = mUpdadeSongPresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
     }
 
@@ -26,6 +29,7 @@ public class UpdateSongModel implements IUpdateSongModel {
                 Convert.toContentValues(song),
                 Song._ID + " = ?",
                 new String[]{Integer.toString(song.getId())});
+        mUpdadeSongPresenter.onSongUpdated();
     }
 
 }

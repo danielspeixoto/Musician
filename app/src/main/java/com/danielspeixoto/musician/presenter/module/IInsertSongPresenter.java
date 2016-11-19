@@ -9,4 +9,6 @@ public interface IInsertSongPresenter {
 
     void insertSong(Song song);
 
+    void onSongInserted();
+
 }

@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.danielspeixoto.musician.model.module.ISelectSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.ISelectSongPresenter;
-import com.danielspeixoto.musician.util.Contract;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
@@ -25,7 +24,6 @@ public class SelectSongModel implements ISelectSongModel {
 
     @Override
     public void selectSong(int index) {
-        Song song;
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 Song._ID,
@@ -44,8 +42,8 @@ public class SelectSongModel implements ISelectSongModel {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            cursor.close();
             mSelectSongPresenter.onSongReceived(new Song(cursor));
+            cursor.close();
         }
     }
 

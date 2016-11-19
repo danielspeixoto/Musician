@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.danielspeixoto.musician.model.module.IInsertSongModel;
 import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.presenter.module.IInsertSongPresenter;
 import com.danielspeixoto.musician.util.Convert;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
@@ -14,8 +15,10 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class InsertSongModel implements IInsertSongModel {
 
     private final DatabaseHandler mDBHandler;
+    private final IInsertSongPresenter mInsertSongPresenter;
 
-    public InsertSongModel(Context mContext) {
+    public InsertSongModel(IInsertSongPresenter mInsertSongPresenter, Context mContext) {
+        this.mInsertSongPresenter = mInsertSongPresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
     }
 
@@ -23,6 +26,7 @@ public class InsertSongModel implements IInsertSongModel {
     public void insertSong(Song song) {
         SQLiteDatabase db = mDBHandler.getWritableDatabase();
         db.insert(Song.TABLE, null, Convert.toContentValues(song));
+        mInsertSongPresenter.onSongInserted();
     }
 
 }

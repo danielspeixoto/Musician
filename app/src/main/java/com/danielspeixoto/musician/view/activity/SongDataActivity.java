@@ -5,9 +5,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.view.module.IToastView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public abstract class SongDataActivity extends BaseActivity {
+public abstract class SongDataActivity extends BaseActivity implements IToastView {
 
     public static final String NO_TEXT = "";
     protected Song song = new Song();
@@ -45,8 +47,14 @@ public abstract class SongDataActivity extends BaseActivity {
         song.setArtist(artistEdit.getText().toString());
         song.setComments(commentsEdit.getText().toString());
         song.setLevel(levelSeek.getProgress());
-        song.setBpm(bpmEdit.getText().toString().equals(NO_TEXT) ? 0 : Integer.getInteger((bpmEdit.getText().toString())));
         song.setBeatsPerBar(beatsPerBarEdit.getText().toString());
+        if (!bpmEdit.getText().toString().equals(NO_TEXT)) {
+            song.setBpm(Integer.parseInt((bpmEdit.getText().toString())));
+        }
     }
 
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG);
+    }
 }

@@ -4,30 +4,29 @@ import android.content.Context;
 
 import com.danielspeixoto.musician.model.SelectAllSongsModel;
 import com.danielspeixoto.musician.model.module.ISelectAllSongsModel;
-import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.module.IAllSongsPresenter;
-import com.danielspeixoto.musician.view.module.IListSongView;
+import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
+import com.danielspeixoto.musician.view.module.IListView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class AllSongsPresenter implements IAllSongsPresenter {
+public class AllSongsPresenter implements ISelectAllPresenter {
 
-    private IListSongView mListSongView;
+    private IListView mListSongView;
     private ISelectAllSongsModel mSelectAllSongsModel;
 
-    public AllSongsPresenter(IListSongView mListSongView, Context mContext) {
+    public AllSongsPresenter(IListView mListSongView, Context mContext) {
         this.mListSongView = mListSongView;
         this.mSelectAllSongsModel = new SelectAllSongsModel(this, mContext);
     }
 
     @Override
-    public void selectAllSongs() {
+    public void selectAll() {
         mSelectAllSongsModel.selectAllSongs();
     }
 
     @Override
-    public void onReceivingSongs(Song song) {
-        mListSongView.addSongToList(song);
+    public void onReceiving(Object object) {
+        mListSongView.addItem(object);
     }
 }

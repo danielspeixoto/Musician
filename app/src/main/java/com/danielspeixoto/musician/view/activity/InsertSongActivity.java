@@ -12,6 +12,6 @@ public class InsertSongActivity extends SongDataActivity {
     @Override
     public void saveSong(View view) {
         super.saveSong(view);
-        new InsertSongPresenter(this).insertSong(song);
+        new InsertSongPresenter(this, this).insertSong(song);
     }
 }
