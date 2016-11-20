@@ -3,6 +3,8 @@ package com.danielspeixoto.musician.util;
 import android.content.ContentValues;
 
 import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.model.pojo.Task;
+import com.danielspeixoto.musician.model.pojo.ToDo;
 
 /**
  * Created by root on 14/11/16.
@@ -19,6 +21,21 @@ public class Convert {
         values.put(Song.BPM, song.getBpm());
         values.put(Song.BEATS_PER_BAR, song.getBeatsPerBar());
         values.put(Song.VIDEO_PATH, song.getVideoPath());
+        return values;
+    }
+
+    public static ContentValues toContentValues(Task task) {
+        ContentValues values = new ContentValues();
+        values.put(Task.NAME, task.getName());
+        values.put(Task.DESCRIPTION, task.getDescription());
+        return values;
+    }
+
+    public static ContentValues toContentValues(ToDo toDo) {
+        ContentValues values = new ContentValues();
+        values.put(ToDo.DESCRIPTION, toDo.getDescription());
+        values.put(ToDo.IS_FINISHED, toDo.isFinished());
+        values.put(ToDo.TASK_ID, toDo.getTaskId());
         return values;
     }
 }

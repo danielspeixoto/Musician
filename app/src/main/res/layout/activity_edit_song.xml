@@ -131,7 +131,6 @@
                 android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="saveSong"
                 android:text="Save" />
 
         </LinearLayout>

@@ -3,10 +3,10 @@ package com.danielspeixoto.musician.presenter.module;
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public interface ISelectAllPresenter<T> {
+public interface IInsertPresenter<T> {
 
-    void selectAll();
+    void insert(T t);
 
-    void onReceiving(T t);
+    void onInserted();
 
 }

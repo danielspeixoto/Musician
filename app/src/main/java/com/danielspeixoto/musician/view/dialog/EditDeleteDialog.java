@@ -11,7 +11,7 @@ import android.support.v7.app.AlertDialog;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.DeleteSongPresenter;
-import com.danielspeixoto.musician.presenter.module.IDeleteSongPresenter;
+import com.danielspeixoto.musician.presenter.module.IDeletePresenter;
 import com.danielspeixoto.musician.view.activity.UpdateSongActivity;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 
@@ -21,7 +21,7 @@ import com.danielspeixoto.musician.view.module.IDeleteItemView;
 public class EditDeleteDialog extends DialogFragment {
 
     public static final String TAG = "editDelete";
-    private IDeleteSongPresenter mDeleteSongPresenter;
+    private IDeletePresenter mDeleteSongPresenter;
 
     public EditDeleteDialog(IDeleteItemView deleteItemView, Context context) {
         mDeleteSongPresenter = new DeleteSongPresenter(deleteItemView, context);
@@ -41,7 +41,7 @@ public class EditDeleteDialog extends DialogFragment {
                                     startActivity(intent);
                                     break;
                                 case 1:
-                                    new AreYouSureDialog(() -> mDeleteSongPresenter.deleteSong(id))
+                                    new AreYouSureDialog(() -> mDeleteSongPresenter.delete(id))
                                             .show(getFragmentManager(), AreYouSureDialog.TAG);
                                     break;
                             }

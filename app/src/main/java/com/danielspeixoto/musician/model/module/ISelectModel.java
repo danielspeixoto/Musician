@@ -3,8 +3,8 @@ package com.danielspeixoto.musician.model.module;
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public interface ISelectSongModel {
+public interface ISelectModel<T> {
 
-    void selectSong(int index);
+    void select(int index);
 
 }

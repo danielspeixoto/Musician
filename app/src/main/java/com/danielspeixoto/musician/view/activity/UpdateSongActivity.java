@@ -7,12 +7,12 @@ import android.view.View;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.SelectSongPresenter;
 import com.danielspeixoto.musician.presenter.UpdateSongPresenter;
-import com.danielspeixoto.musician.view.module.ISelectSongView;
+import com.danielspeixoto.musician.view.module.ISelectView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class UpdateSongActivity extends SongDataActivity implements ISelectSongView {
+public class UpdateSongActivity extends SongDataActivity implements ISelectView<Song> {
 
     private int id;
 
@@ -20,14 +20,14 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         id = getIntent().getIntExtra(Song._ID, 1);
-        new SelectSongPresenter(this, this).selectSong(id);
+        new SelectSongPresenter(this, this).select(id);
     }
 
     @Override
     public void saveSong(View view) {
         super.saveSong(view);
         song.setId(id);
-        new UpdateSongPresenter(this, this).updateSong(song);
+        new UpdateSongPresenter(this, this).update(song);
         finish();
     }
 

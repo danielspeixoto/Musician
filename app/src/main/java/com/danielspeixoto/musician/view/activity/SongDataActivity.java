@@ -81,6 +81,7 @@ public abstract class SongDataActivity extends BaseActivity implements IToastVie
         }
     }
 
+    @OnClick(R.id.saveButton)
     public void saveSong(View view) {
         song.setName(nameEdit.getText().toString());
         song.setArtist(artistEdit.getText().toString());

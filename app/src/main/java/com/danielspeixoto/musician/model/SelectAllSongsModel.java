@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.danielspeixoto.musician.model.module.ISelectAllSongsModel;
+import com.danielspeixoto.musician.model.module.ISelectAllModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
 import com.danielspeixoto.musician.util.DatabaseHandler;
@@ -12,7 +12,7 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 /**
  * Created by danielspeixoto on 17/11/16.
  */
-public class SelectAllSongsModel implements ISelectAllSongsModel {
+public class SelectAllSongsModel implements ISelectAllModel<Song> {
 
     private final DatabaseHandler mDBHandler;
     private final ISelectAllPresenter mSelectAllSongsPresenter;
@@ -23,7 +23,7 @@ public class SelectAllSongsModel implements ISelectAllSongsModel {
     }
 
     @Override
-    public void selectAllSongs() {
+    public void selectAll() {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 Song._ID,

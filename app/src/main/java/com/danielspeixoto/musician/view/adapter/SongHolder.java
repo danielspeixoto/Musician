@@ -2,7 +2,6 @@ package com.danielspeixoto.musician.view.adapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,25 +12,20 @@ import com.danielspeixoto.musician.view.dialog.EditDeleteDialog;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by danielspeixoto on 17/11/16.
  */
-public class SongHolder extends RecyclerView.ViewHolder implements IDeleteItemView {
+public class SongHolder extends BaseHolder implements IDeleteItemView {
 
     @BindView(R.id.songName)
     TextView songName;
     @BindView(R.id.songArtist)
     TextView songArtist;
-    private int id;
-    private BaseRecyclerAdapter mAdapter;
 
     public SongHolder(View itemView, BaseRecyclerAdapter mAdapter) {
-        super(itemView);
-        this.mAdapter = mAdapter;
-        ButterKnife.bind(this, itemView);
+        super(itemView, mAdapter);
     }
 
     @OnClick(R.id.optionsButton)
@@ -48,10 +42,6 @@ public class SongHolder extends RecyclerView.ViewHolder implements IDeleteItemVi
         Intent intent = new Intent(mAdapter.getActivity(), SongInfoActivity.class);
         intent.putExtra(Song._ID, id);
         mAdapter.getActivity().startActivity(intent);
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
