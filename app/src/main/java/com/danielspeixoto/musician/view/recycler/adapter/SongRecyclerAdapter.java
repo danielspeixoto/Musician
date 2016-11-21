@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.adapter;
+package com.danielspeixoto.musician.view.recycler.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.AllSongsPresenter;
+import com.danielspeixoto.musician.view.recycler.holder.SongHolder;
 
 /**
  * Created by danielspeixoto on 14/11/16.
@@ -24,8 +25,8 @@ public class SongRecyclerAdapter extends AllRecyclerAdapter {
         Song song = (Song) data.get(position);
         SongHolder songHolder = (SongHolder) holder;
         songHolder.setId(song.getId());
-        songHolder.songName.setText(song.getName());
-        songHolder.songArtist.setText(song.getArtist());
+        songHolder.getSongName().setText(song.getName());
+        songHolder.getSongArtist().setText(song.getArtist());
     }
 
     @Override

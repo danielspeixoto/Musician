@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.adapter;
+package com.danielspeixoto.musician.view.recycler.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.GetRelatedToDosPresenter;
+import com.danielspeixoto.musician.view.recycler.holder.ToDoHolder;
 
 /**
  * Created by danielspeixoto on 20/11/16.
@@ -24,8 +25,8 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter {
         ToDo toDo = (ToDo) data.get(position);
         ToDoHolder toDoHolder = (ToDoHolder) holder;
         toDoHolder.setId(toDo.getId());
-        toDoHolder.toDoText.setText(toDo.getDescription());
-        toDoHolder.checkBox.setChecked(toDo.isFinished());
+        toDoHolder.getToDoText().setText(toDo.getDescription());
+        toDoHolder.getCheckBox().setChecked(toDo.isFinished());
     }
 
     @Override

@@ -14,16 +14,16 @@ import com.danielspeixoto.musician.view.module.IToastView;
 public class InsertSongPresenter implements IInsertPresenter<Song> {
 
     private final IToastView mToastView;
-    private IInsertModel mInsertSongModel;
+    private IInsertModel mInsertModel;
 
     public InsertSongPresenter(IToastView mToastView, Context mContext) {
         this.mToastView = mToastView;
-        this.mInsertSongModel = new InsertSongModel(this, mContext);
+        this.mInsertModel = new InsertSongModel(this, mContext);
     }
 
     @Override
     public void insert(Song song) {
-        mInsertSongModel.insert(song);
+        mInsertModel.insert(song);
     }
 
     @Override

@@ -15,11 +15,11 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class SelectSongModel implements ISelectModel<Song> {
 
     private final DatabaseHandler mDBHandler;
-    private final ISelectPresenter mSelectSongPresenter;
+    private final ISelectPresenter mSelectPresenter;
 
-    public SelectSongModel(ISelectPresenter mSelectSongPresenter, Context mContext) {
+    public SelectSongModel(ISelectPresenter mSelectPresenter, Context mContext) {
         this.mDBHandler = new DatabaseHandler(mContext);
-        this.mSelectSongPresenter = mSelectSongPresenter;
+        this.mSelectPresenter = mSelectPresenter;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SelectSongModel implements ISelectModel<Song> {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            mSelectSongPresenter.onReceived(new Song(cursor));
+            mSelectPresenter.onReceived(new Song(cursor));
             cursor.close();
         }
     }

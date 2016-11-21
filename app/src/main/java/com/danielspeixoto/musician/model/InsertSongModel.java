@@ -15,10 +15,10 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class InsertSongModel implements IInsertModel<Song> {
 
     private final DatabaseHandler mDBHandler;
-    private final IInsertPresenter mInsertSongPresenter;
+    private final IInsertPresenter mInsertPresenter;
 
-    public InsertSongModel(IInsertPresenter mInsertSongPresenter, Context mContext) {
-        this.mInsertSongPresenter = mInsertSongPresenter;
+    public InsertSongModel(IInsertPresenter mInsertPresenter, Context mContext) {
+        this.mInsertPresenter = mInsertPresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
     }
 
@@ -26,7 +26,7 @@ public class InsertSongModel implements IInsertModel<Song> {
     public void insert(Song song) {
         SQLiteDatabase db = mDBHandler.getWritableDatabase();
         db.insert(Song.TABLE, null, Convert.toContentValues(song));
-        mInsertSongPresenter.onInserted();
+        mInsertPresenter.onInserted();
     }
 
 }

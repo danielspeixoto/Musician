@@ -14,16 +14,16 @@ import com.danielspeixoto.musician.view.module.IToastView;
 public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
     private final IToastView mToastView;
-    private IUpdateModel mUpdateSongModel;
+    private IUpdateModel mUpdateModel;
 
     public UpdateSongPresenter(IToastView mToastView, Context mContext) {
         this.mToastView = mToastView;
-        this.mUpdateSongModel = new UpdateSongModel(this, mContext);
+        this.mUpdateModel = new UpdateSongModel(this, mContext);
     }
 
     @Override
     public void update(Song song) {
-        mUpdateSongModel.update(song);
+        mUpdateModel.update(song);
     }
 
     @Override

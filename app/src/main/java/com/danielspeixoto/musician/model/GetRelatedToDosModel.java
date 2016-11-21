@@ -39,7 +39,7 @@ public class GetRelatedToDosModel implements IGetRelatedModel<ToDo> {
                 ToDo._ID);
         if (cursor.moveToFirst()) {
             do {
-                mGetRelatedPresenter.onReceiving(new ToDo(cursor));
+                mGetRelatedPresenter.onReceivingRelated(new ToDo(cursor));
             } while (cursor.moveToNext());
             cursor.close();
         }

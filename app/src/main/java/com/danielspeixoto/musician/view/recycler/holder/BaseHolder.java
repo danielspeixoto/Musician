@@ -1,7 +1,9 @@
-package com.danielspeixoto.musician.view.adapter;
+package com.danielspeixoto.musician.view.recycler.holder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.danielspeixoto.musician.view.recycler.adapter.BaseRecyclerAdapter;
 
 import butterknife.ButterKnife;
 import lombok.Setter;

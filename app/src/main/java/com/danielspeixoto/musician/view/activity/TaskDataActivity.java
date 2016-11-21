@@ -9,14 +9,14 @@ import android.widget.Toast;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.model.pojo.ToDo;
-import com.danielspeixoto.musician.view.adapter.ToDoRecyclerAdapter;
 import com.danielspeixoto.musician.view.module.IToastView;
+import com.danielspeixoto.musician.view.recycler.adapter.ToDoRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TaskDataActiviy extends BaseActivity implements IToastView {
+public class TaskDataActivity extends BaseActivity implements IToastView {
 
     Task task = new Task();
     ToDoRecyclerAdapter mAdapter;

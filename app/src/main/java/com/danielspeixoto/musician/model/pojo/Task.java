@@ -1,5 +1,7 @@
 package com.danielspeixoto.musician.model.pojo;
 
+import android.database.Cursor;
+
 import com.danielspeixoto.musician.util.Contract;
 
 import java.util.ArrayList;
@@ -19,18 +21,18 @@ public class Task extends Contract.TaskColumns {
     public Task() {
     }
 
-    public Task(int id, String name, String description, ArrayList<ToDo> toDos) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.toDos = toDos;
+    public Task(Cursor cursor) {
+        id = cursor.getColumnIndex(_ID) != -1 ?
+                cursor.getInt(cursor.getColumnIndex(_ID)) : 0;
+        name = cursor.getColumnIndex(NAME) != -1 ?
+                cursor.getString(cursor.getColumnIndex(NAME)) : null;
+        description = cursor.getColumnIndex(DESCRIPTION) != -1 ?
+                cursor.getString(cursor.getColumnIndex(DESCRIPTION)) : null;
+
     }
 
     public void addTodo(ToDo toDo) {
         this.toDos.add(toDo);
     }
 
-    public void removeTodo(int index) {
-        this.toDos.remove(index);
-    }
 }

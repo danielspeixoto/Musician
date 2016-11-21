@@ -7,6 +7,6 @@ public interface IGetRelatedPresenter<T> {
 
     void getRelated(int parentId);
 
-    void onReceiving(T t);
+    void onReceivingRelated(T t);
 
 }

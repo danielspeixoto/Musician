@@ -5,7 +5,7 @@ import com.danielspeixoto.musician.presenter.InsertTaskPresenter;
 /**
  * Created by danielspeixoto on 20/11/16.
  */
-public class InsertTaskActivity extends TaskDataActiviy {
+public class InsertTaskActivity extends TaskDataActivity {
 
     @Override
     public void saveTask() {

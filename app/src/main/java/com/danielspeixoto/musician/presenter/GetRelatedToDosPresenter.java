@@ -22,7 +22,7 @@ public class GetRelatedToDosPresenter implements IGetRelatedPresenter<ToDo> {
     }
 
     @Override
-    public void onReceiving(ToDo toDo) {
+    public void onReceivingRelated(ToDo toDo) {
         mListToDoView.addItem(toDo);
     }
 

@@ -15,10 +15,10 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 public class UpdateSongModel implements IUpdateModel<Song> {
 
     private final DatabaseHandler mDBHandler;
-    private final IUpdatePresenter mUpdadeSongPresenter;
+    private final IUpdatePresenter mUpdatePresenter;
 
-    public UpdateSongModel(IUpdatePresenter mUpdadeSongPresenter, Context mContext) {
-        this.mUpdadeSongPresenter = mUpdadeSongPresenter;
+    public UpdateSongModel(IUpdatePresenter mUpdatePresenter, Context mContext) {
+        this.mUpdatePresenter = mUpdatePresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
     }
 
@@ -29,7 +29,7 @@ public class UpdateSongModel implements IUpdateModel<Song> {
                 Convert.toContentValues(song),
                 Song._ID + " = ?",
                 new String[]{Integer.toString(song.getId())});
-        mUpdadeSongPresenter.onUpdated();
+        mUpdatePresenter.onUpdated();
     }
 
 }

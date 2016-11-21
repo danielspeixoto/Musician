@@ -5,19 +5,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.danielspeixoto.musician.model.module.ISelectAllModel;
-import com.danielspeixoto.musician.model.pojo.Song;
+import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
- * Created by danielspeixoto on 17/11/16.
+ * Created by danielspeixoto on 21/11/16.
  */
-public class SelectAllSongsModel implements ISelectAllModel<Song> {
+public class SelectAllTasksModel implements ISelectAllModel<Task> {
 
     private final DatabaseHandler mDBHandler;
-    private final ISelectAllPresenter<Song> mSelectAllPresenter;
+    private final ISelectAllPresenter<Task> mSelectAllPresenter;
 
-    public SelectAllSongsModel(ISelectAllPresenter mSelectAllPresenter, Context mContext) {
+    public SelectAllTasksModel(ISelectAllPresenter mSelectAllPresenter, Context mContext) {
         this.mDBHandler = new DatabaseHandler(mContext);
         this.mSelectAllPresenter = mSelectAllPresenter;
     }
@@ -26,20 +26,21 @@ public class SelectAllSongsModel implements ISelectAllModel<Song> {
     public void selectAll() {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
-                Song._ID,
-                Song.NAME,
-                Song.ARTIST
+                Task._ID,
+                Task.NAME,
+                Task.DESCRIPTION
         };
-        Cursor cursor = db.query(Song.TABLE,
+        Cursor cursor = db.query(Task.TABLE,
                 projection,
                 null,
                 null,
                 null,
                 null,
-                Song.NAME);
+                Task._ID + " DESC"); // Order descending
         if (cursor.moveToFirst()) {
             do {
-                mSelectAllPresenter.onReceiving(new Song(cursor));
+                mSelectAllPresenter.onReceiving(new Task(cursor));
+
             } while (cursor.moveToNext());
             cursor.close();
         }

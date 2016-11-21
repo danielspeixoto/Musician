@@ -13,21 +13,21 @@ import com.danielspeixoto.musician.view.module.ISelectView;
  */
 public class SelectSongPresenter implements ISelectPresenter<Song> {
 
-    private ISelectView mSelectSongView;
-    private ISelectModel mSelectSongModel;
+    private ISelectView mSelectView;
+    private ISelectModel mSelectModel;
 
     public SelectSongPresenter(ISelectView mSelectSongView, Context mContext) {
-        this.mSelectSongView = mSelectSongView;
-        this.mSelectSongModel = new SelectSongModel(this, mContext);
+        this.mSelectView = mSelectSongView;
+        this.mSelectModel = new SelectSongModel(this, mContext);
     }
 
     @Override
     public void select(int id) {
-        mSelectSongModel.select(id);
+        mSelectModel.select(id);
     }
 
     @Override
     public void onReceived(Song song) {
-        mSelectSongView.fillData(song);
+        mSelectView.fillData(song);
     }
 }
