@@ -1,5 +1,7 @@
 package com.danielspeixoto.musician.view.recycler.holder;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,12 +30,22 @@ public class SongHolder extends AllHolder {
     public SongHolder(View itemView, BaseRecyclerAdapter mAdapter) {
         super(itemView, mAdapter);
         ButterKnife.bind(this, itemView);
-        dialog = new SongEditDeleteDialog(this, mAdapter.getActivity());
     }
 
     @OnClick(R.id.itemLayout)
     public void onItemClicked() {
-        getInfo(SongInfoActivity.class);
+        Intent intent = new Intent(mAdapter.getActivity(), SongInfoActivity.class);
+        intent.putExtra(ID, id);
+        mAdapter.getActivity().startActivity(intent);
+    }
+
+    @OnClick(R.id.optionsButton)
+    public void optionsButtonAction() {
+        SongEditDeleteDialog dialog = new SongEditDeleteDialog(this, mAdapter.getActivity());
+        Bundle bundle = new Bundle();
+        bundle.putInt(ID, id);
+        dialog.setArguments(bundle);
+        dialog.show(mAdapter.getActivity().getSupportFragmentManager(), dialog.TAG);
     }
 
 }

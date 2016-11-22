@@ -14,7 +14,7 @@ import com.danielspeixoto.musician.view.module.IToastView;
 public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
     private final IToastView mToastView;
-    private IUpdateModel mUpdateModel;
+    private final IUpdateModel mUpdateModel;
 
     public UpdateSongPresenter(IToastView mToastView, Context mContext) {
         this.mToastView = mToastView;

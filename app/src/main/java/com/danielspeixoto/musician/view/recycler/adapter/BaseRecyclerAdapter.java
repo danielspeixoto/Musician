@@ -9,6 +9,7 @@ import com.danielspeixoto.musician.view.module.IListView;
 import java.util.ArrayList;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by danielspeixoto on 17/11/16.
@@ -19,6 +20,7 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     @Getter
     protected AppCompatActivity activity;
     @Getter
+    @Setter
     protected ArrayList data = new ArrayList<>();
 
     public BaseRecyclerAdapter(AppCompatActivity activity) {

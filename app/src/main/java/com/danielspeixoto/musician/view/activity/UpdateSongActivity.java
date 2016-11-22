@@ -14,25 +14,22 @@ import com.danielspeixoto.musician.view.module.ISelectView;
  */
 public class UpdateSongActivity extends SongDataActivity implements ISelectView<Song> {
 
-    private int id;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = getIntent().getIntExtra(Song._ID, 1);
-        new SelectSongPresenter(this, this).select(id);
+        new SelectSongPresenter(this, this).select(getIntent().getIntExtra(Song._ID, 1));
     }
 
     @Override
     public void saveSong(View view) {
         super.saveSong(view);
-        song.setId(id);
         new UpdateSongPresenter(this, this).update(song);
         finish();
     }
 
     @Override
     public void fillData(Song song) {
+        this.song = song;
         nameEdit.setText(song.getName());
         artistEdit.setText(song.getArtist());
         beatsPerBarEdit.setText(song.getBeatsPerBar());

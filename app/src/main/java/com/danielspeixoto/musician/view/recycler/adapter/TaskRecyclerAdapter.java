@@ -25,6 +25,7 @@ public class TaskRecyclerAdapter extends AllRecyclerAdapter {
         Task task = (Task) data.get(position);
         TaskHolder taskHolder = (TaskHolder) holder;
         taskHolder.setId(task.getId());
+        taskHolder.setIndex(position);
         taskHolder.getTaskName().setText(task.getName());
         taskHolder.getTaskDescription().setText(task.getDescription());
     }

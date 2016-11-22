@@ -3,8 +3,9 @@ package com.danielspeixoto.musician.view.dialog;
 import android.content.Context;
 import android.content.Intent;
 
+import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.DeleteTaskPresenter;
-import com.danielspeixoto.musician.view.activity.UpdateSongActivity;
+import com.danielspeixoto.musician.view.activity.UpdateTaskActivity;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 
 /**
@@ -18,9 +19,8 @@ public class TaskEditDeleteDialog extends BaseEditDeleteDialog {
 
     @Override
     public void onEditClicked() {
-        // TODO Create UpdateTaskActivity
-        Intent intent = new Intent(getActivity(), UpdateSongActivity.class);
-        intent.putExtra(ID, id);
+        Intent intent = new Intent(getActivity(), UpdateTaskActivity.class);
+        intent.putExtra(Task.TABLE, (Task) getArguments().getParcelable(Task.TABLE));
         startActivity(intent);
     }
 }

@@ -25,6 +25,7 @@ public class SongRecyclerAdapter extends AllRecyclerAdapter {
         Song song = (Song) data.get(position);
         SongHolder songHolder = (SongHolder) holder;
         songHolder.setId(song.getId());
+        songHolder.setIndex(position);
         songHolder.getSongName().setText(song.getName());
         songHolder.getSongArtist().setText(song.getArtist());
     }

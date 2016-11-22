@@ -34,7 +34,7 @@ public class Convert {
     public static ContentValues toContentValues(ToDo toDo) {
         ContentValues values = new ContentValues();
         values.put(ToDo.DESCRIPTION, toDo.getDescription());
-        values.put(ToDo.IS_FINISHED, toDo.isFinished());
+        values.put(ToDo.IS_FINISHED, toDo.isFinished() ? 1 : 0);
         values.put(ToDo.TASK_ID, toDo.getTaskId());
         return values;
     }

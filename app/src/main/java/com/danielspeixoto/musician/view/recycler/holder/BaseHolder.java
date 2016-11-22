@@ -15,6 +15,8 @@ public abstract class BaseHolder extends RecyclerView.ViewHolder {
 
     @Setter
     protected int id;
+    @Setter
+    protected int index;
     protected BaseRecyclerAdapter mAdapter;
 
     public BaseHolder(View itemView, BaseRecyclerAdapter mAdapter) {

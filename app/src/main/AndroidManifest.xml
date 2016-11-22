@@ -41,6 +41,10 @@
         <activity
             android:name=".view.activity.InsertTaskActivity"
             android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.UpdateTaskActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.TaskInfoActivity"></activity>
     </application>
 
 </manifest>

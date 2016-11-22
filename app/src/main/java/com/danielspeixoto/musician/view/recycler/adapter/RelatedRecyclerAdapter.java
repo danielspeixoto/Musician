@@ -4,11 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.danielspeixoto.musician.presenter.module.IGetRelatedPresenter;
 
+import lombok.Setter;
+
 /**
  * Created by danielspeixoto on 20/11/16.
  */
 public abstract class RelatedRecyclerAdapter extends BaseRecyclerAdapter {
 
+    @Setter
     protected int relationId;
     protected IGetRelatedPresenter mGetRelatedPresenter;
 

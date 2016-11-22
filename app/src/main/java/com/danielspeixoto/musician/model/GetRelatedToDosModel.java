@@ -27,6 +27,7 @@ public class GetRelatedToDosModel implements IGetRelatedModel<ToDo> {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 ToDo._ID,
+                ToDo.TASK_ID,
                 ToDo.DESCRIPTION,
                 ToDo.IS_FINISHED
         };

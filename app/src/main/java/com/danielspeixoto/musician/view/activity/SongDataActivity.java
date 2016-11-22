@@ -102,6 +102,6 @@ public abstract class SongDataActivity extends BaseActivity implements IToastVie
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG);
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

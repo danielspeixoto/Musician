@@ -18,9 +18,9 @@ import butterknife.OnClick;
 
 public class TaskDataActivity extends BaseActivity implements IToastView {
 
+    private static final String SAVED_TO_DOS = "savedToDos";
     Task task = new Task();
     ToDoRecyclerAdapter mAdapter;
-
     @BindView(R.id.nameEdit)
     EditText nameEdit;
     @BindView(R.id.descriptionEdit)
@@ -38,6 +38,9 @@ public class TaskDataActivity extends BaseActivity implements IToastView {
         mAdapter = new ToDoRecyclerAdapter(this);
         toDoList.setAdapter(mAdapter);
         toDoList.setLayoutManager(new LinearLayoutManager(this));
+        if (savedInstanceState != null) {
+            mAdapter.setData(savedInstanceState.getParcelableArrayList(SAVED_TO_DOS));
+        }
     }
 
     @OnClick(R.id.addToDoButton)
@@ -52,6 +55,12 @@ public class TaskDataActivity extends BaseActivity implements IToastView {
         task.setName(nameEdit.getText().toString());
         task.setDescription(descriptionEdit.getText().toString());
         task.setToDos(mAdapter.getData());
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(SAVED_TO_DOS, mAdapter.getData());
     }
 
     @Override
