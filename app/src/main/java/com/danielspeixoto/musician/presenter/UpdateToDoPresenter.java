@@ -6,18 +6,18 @@ import com.danielspeixoto.musician.model.UpdateToDoModel;
 import com.danielspeixoto.musician.model.module.IUpdateModel;
 import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
-import com.danielspeixoto.musician.view.module.IToastView;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 21/11/16.
  */
 public class UpdateToDoPresenter implements IUpdatePresenter<ToDo> {
 
-    private final IToastView mToastView;
+    private final IUpdateView mUpdateView;
     private final IUpdateModel mUpdateModel;
 
-    public UpdateToDoPresenter(IToastView mToastView, Context context) {
-        this.mToastView = mToastView;
+    public UpdateToDoPresenter(IUpdateView mUpdateView, Context context) {
+        this.mUpdateView = mUpdateView;
         this.mUpdateModel = new UpdateToDoModel(this, context);
     }
 
@@ -28,6 +28,6 @@ public class UpdateToDoPresenter implements IUpdatePresenter<ToDo> {
 
     @Override
     public void onUpdated() {
-
+        mUpdateView.onObjectUpdated();
     }
 }

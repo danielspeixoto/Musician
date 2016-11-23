@@ -24,8 +24,8 @@ public class ToDo extends Contract.ToDoColumns implements Parcelable {
             return new ToDo[size];
         }
     };
-    private int id;
-    private long taskId;
+    private long id;
+    private long taskId = -1; // Default Value
     private String description;
     private boolean isFinished;
 
@@ -54,7 +54,7 @@ public class ToDo extends Contract.ToDoColumns implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeLong(id);
         dest.writeLong(taskId);
         dest.writeString(description);
         dest.writeByte((byte) (isFinished ? 1 : 0));

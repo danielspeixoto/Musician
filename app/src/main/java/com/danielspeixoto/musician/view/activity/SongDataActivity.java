@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.view.module.IToastView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public abstract class SongDataActivity extends BaseActivity implements IToastView {
+public abstract class SongDataActivity extends BaseActivity {
 
     public static final int PICK_VIDEO = 1;
     protected Song song = new Song();
@@ -98,10 +96,5 @@ public abstract class SongDataActivity extends BaseActivity implements IToastVie
         videoView.setVideoPath(videoPath);
         videoView.start();
         videoContainer.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

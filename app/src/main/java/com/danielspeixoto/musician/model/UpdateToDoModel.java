@@ -28,7 +28,7 @@ public class UpdateToDoModel implements IUpdateModel<ToDo> {
         db.update(ToDo.TABLE,
                 Convert.toContentValues(toDo),
                 ToDo._ID + " = ?",
-                new String[]{Integer.toString(toDo.getId())});
+                new String[]{Long.toString(toDo.getId())});
         mUpdatePresenter.onUpdated();
     }
 }

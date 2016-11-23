@@ -1,14 +1,16 @@
 package com.danielspeixoto.musician.view.activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.UpdateTaskPresenter;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 21/11/16.
  */
-public class UpdateTaskActivity extends TaskDataActivity {
+public class UpdateTaskActivity extends TaskDataActivity implements IUpdateView<Task> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +34,10 @@ public class UpdateTaskActivity extends TaskDataActivity {
     public void fillData(Task task) {
         nameEdit.setText(task.getName());
         descriptionEdit.setText(task.getDescription());
+    }
+
+    @Override
+    public void onObjectUpdated(String message) {
+        Toast.makeText(getApplicationContext(), "Task has been updated", Toast.LENGTH_LONG).show();
     }
 }

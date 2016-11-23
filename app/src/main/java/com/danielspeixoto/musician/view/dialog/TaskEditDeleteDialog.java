@@ -2,6 +2,8 @@ package com.danielspeixoto.musician.view.dialog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.DeleteTaskPresenter;
@@ -15,6 +17,12 @@ public class TaskEditDeleteDialog extends BaseEditDeleteDialog {
 
     public TaskEditDeleteDialog(IDeleteItemView deleteItemView, Context context) {
         mDeletePresenter = new DeleteTaskPresenter(deleteItemView, context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        id = ((Task) getArguments().getParcelable(Task.TABLE)).getId();
     }
 
     @Override

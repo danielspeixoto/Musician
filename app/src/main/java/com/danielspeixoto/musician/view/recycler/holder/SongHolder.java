@@ -43,7 +43,7 @@ public class SongHolder extends AllHolder {
     public void optionsButtonAction() {
         SongEditDeleteDialog dialog = new SongEditDeleteDialog(this, mAdapter.getActivity());
         Bundle bundle = new Bundle();
-        bundle.putInt(ID, id);
+        bundle.putLong(ID, id);
         dialog.setArguments(bundle);
         dialog.show(mAdapter.getActivity().getSupportFragmentManager(), dialog.TAG);
     }
