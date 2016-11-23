@@ -7,6 +7,6 @@ public interface IInsertPresenter<T> {
 
     void insert(T t);
 
-    void onInserted();
+    void onInserted(long id);
 
 }

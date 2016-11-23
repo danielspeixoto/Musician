@@ -3,16 +3,19 @@ package com.danielspeixoto.musician.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.SelectSongPresenter;
 import com.danielspeixoto.musician.presenter.UpdateSongPresenter;
 import com.danielspeixoto.musician.view.module.ISelectView;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class UpdateSongActivity extends SongDataActivity implements ISelectView<Song> {
+public class UpdateSongActivity extends SongDataActivity implements ISelectView<Song>,
+        IUpdateView<Song> {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,4 +46,8 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
         }
     }
 
+    @Override
+    public void onObjectUpdated() {
+        Toast.makeText(getApplicationContext(), "Song has been updated", Toast.LENGTH_LONG).show();
+    }
 }

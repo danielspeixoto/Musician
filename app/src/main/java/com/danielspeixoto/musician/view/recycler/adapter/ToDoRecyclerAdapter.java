@@ -4,14 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.GetRelatedToDosPresenter;
+import com.danielspeixoto.musician.presenter.InsertToDoPresenter;
 import com.danielspeixoto.musician.presenter.UpdateToDoPresenter;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
-import com.danielspeixoto.musician.view.module.IToastView;
+import com.danielspeixoto.musician.view.module.IInsertView;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 import com.danielspeixoto.musician.view.recycler.holder.ToDoHolder;
 
 import java.util.ArrayList;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 /**
  * Created by danielspeixoto on 20/11/16.
  */
-public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IToastView {
+public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInsertView<ToDo>,
+        IUpdateView {
 
     public ToDoRecyclerAdapter(AppCompatActivity activity) {
         super(activity);
@@ -35,11 +37,15 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IToas
         }).run();
     }
 
+
+    public void newItem(ToDo toDo) {
+        toDo.setTaskId(relationId);
+        new InsertToDoPresenter(this, getActivity()).insert(toDo);
+    }
+
     @Override
-    public void addItem(Object object) {
-        // new InsertToDoPresenter(this, getActivity()).insert((ToDo)object);
-        ((ToDo) object).setTaskId(relationId);
-        super.addItem(object);
+    public void onObjectInserted(ToDo toDo) {
+        super.addItem(toDo);
     }
 
     @Override
@@ -61,7 +67,6 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IToas
     }
 
     @Override
-    public void showMessage(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    public void onObjectUpdated() {
     }
 }

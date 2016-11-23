@@ -6,18 +6,18 @@ import com.danielspeixoto.musician.model.UpdateSongModel;
 import com.danielspeixoto.musician.model.module.IUpdateModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
-import com.danielspeixoto.musician.view.module.IToastView;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
 public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
-    private final IToastView mToastView;
+    private final IUpdateView mUpdateView;
     private final IUpdateModel mUpdateModel;
 
-    public UpdateSongPresenter(IToastView mToastView, Context mContext) {
-        this.mToastView = mToastView;
+    public UpdateSongPresenter(IUpdateView mUpdateView, Context mContext) {
+        this.mUpdateView = mUpdateView;
         this.mUpdateModel = new UpdateSongModel(this, mContext);
     }
 
@@ -28,7 +28,7 @@ public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
     @Override
     public void onUpdated() {
-        mToastView.showMessage("Song has been updated");
+        mUpdateView.onObjectUpdated();
     }
 
 }

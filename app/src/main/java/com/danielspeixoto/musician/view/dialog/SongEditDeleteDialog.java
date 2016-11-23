@@ -13,6 +13,7 @@ import com.danielspeixoto.musician.view.module.IDeleteItemView;
 public class SongEditDeleteDialog extends BaseEditDeleteDialog {
 
     public SongEditDeleteDialog(IDeleteItemView deleteItemView, Context context) {
+        id = getArguments().getInt(ID);
         mDeletePresenter = new DeleteSongPresenter(deleteItemView, context);
     }
 

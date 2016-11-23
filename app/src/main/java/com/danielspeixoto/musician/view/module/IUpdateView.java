@@ -3,8 +3,8 @@ package com.danielspeixoto.musician.view.module;
 /**
  * Created by danielspeixoto on 18/11/16.
  */
-public interface IToastView {
+public interface IUpdateView<T> {
 
-    void showMessage(String message);
+    void onObjectUpdated();
 
 }

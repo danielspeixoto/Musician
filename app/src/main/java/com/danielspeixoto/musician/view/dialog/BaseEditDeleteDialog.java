@@ -25,7 +25,6 @@ public abstract class BaseEditDeleteDialog extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setItems(new CharSequence[]{getString(R.string.dialog_edit), getString(R.string.dialog_delete)},
                         (dialog, which) -> {
-                            id = getArguments().getInt(ID);
                             switch (which) {
                                 case 0:
                                     onEditClicked();

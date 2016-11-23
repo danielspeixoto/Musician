@@ -14,7 +14,7 @@ import lombok.Setter;
 public abstract class BaseHolder extends RecyclerView.ViewHolder {
 
     @Setter
-    protected int id;
+    protected long id;
     @Setter
     protected int index;
     protected BaseRecyclerAdapter mAdapter;

@@ -28,7 +28,7 @@ public class UpdateTaskModel implements IUpdateModel<Task> {
         db.update(Task.TABLE,
                 Convert.toContentValues(task),
                 Task._ID + " = ?",
-                new String[]{Integer.toString(task.getId())});
+                new String[]{Long.toString(task.getId())});
         mUpdatePresenter.onUpdated();
     }
 }

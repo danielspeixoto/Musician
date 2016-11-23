@@ -4,19 +4,17 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.model.pojo.ToDo;
-import com.danielspeixoto.musician.view.module.IToastView;
 import com.danielspeixoto.musician.view.recycler.adapter.ToDoRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TaskDataActivity extends BaseActivity implements IToastView {
+public class TaskDataActivity extends BaseActivity {
 
     private static final String SAVED_TO_DOS = "savedToDos";
     Task task = new Task();
@@ -46,7 +44,7 @@ public class TaskDataActivity extends BaseActivity implements IToastView {
     @OnClick(R.id.addToDoButton)
     public void addToDo() {
         ToDo toDo = new ToDo(toDoEdit.getText().toString());
-        mAdapter.addItem(toDo);
+        mAdapter.newItem(toDo);
         toDoEdit.setText(EMPTY_STRING);
     }
 
@@ -61,10 +59,5 @@ public class TaskDataActivity extends BaseActivity implements IToastView {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList(SAVED_TO_DOS, mAdapter.getData());
-    }
-
-    @Override
-    public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG);
     }
 }

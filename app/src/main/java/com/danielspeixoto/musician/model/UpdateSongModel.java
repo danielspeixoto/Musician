@@ -28,7 +28,7 @@ public class UpdateSongModel implements IUpdateModel<Song> {
         db.update(Song.TABLE,
                 Convert.toContentValues(song),
                 Song._ID + " = ?",
-                new String[]{Integer.toString(song.getId())});
+                new String[]{Long.toString(song.getId())});
         mUpdatePresenter.onUpdated();
     }
 

@@ -16,7 +16,7 @@ public class GetRelatedToDosPresenter implements IGetRelatedPresenter<ToDo> {
     private IListView<ToDo> mListToDoView;
     private IGetRelatedModel<ToDo> mGetRelatedModel;
 
-    public GetRelatedToDosPresenter(IListView mListToDoView, Context mContext) {
+    public GetRelatedToDosPresenter(IListView<ToDo> mListToDoView, Context mContext) {
         this.mListToDoView = mListToDoView;
         this.mGetRelatedModel = new GetRelatedToDosModel(this, mContext);
     }
