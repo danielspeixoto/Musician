@@ -1,7 +1,5 @@
 package com.danielspeixoto.musician.view.activity;
 
-import android.widget.Toast;
-
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.InsertTaskPresenter;
 import com.danielspeixoto.musician.view.module.IInsertView;
@@ -15,11 +13,17 @@ public class InsertTaskActivity extends TaskDataActivity implements IInsertView<
     public void saveTask() {
         super.saveTask();
         new InsertTaskPresenter(this, this).insert(task);
-        finish();
     }
 
     @Override
     public void onObjectInserted(Task task) {
-        Toast.makeText(getApplicationContext(), "Task inserted", Toast.LENGTH_LONG).show();
+        showMessage("Task inserted");
+        mAdapter.updateToDos();
+        finish();
+    }
+
+    @Override
+    public void onError(String message) {
+        showMessage(message);
     }
 }

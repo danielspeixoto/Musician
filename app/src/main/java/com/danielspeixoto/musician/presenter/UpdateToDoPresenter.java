@@ -6,6 +6,7 @@ import com.danielspeixoto.musician.model.UpdateToDoModel;
 import com.danielspeixoto.musician.model.module.IUpdateModel;
 import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
+import com.danielspeixoto.musician.util.Auth;
 import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
@@ -23,7 +24,9 @@ public class UpdateToDoPresenter implements IUpdatePresenter<ToDo> {
 
     @Override
     public void update(ToDo toDo) {
-        mUpdateModel.update(toDo);
+        if (Auth.verifyItem(toDo)) {
+            mUpdateModel.update(toDo);
+        }
     }
 
     @Override

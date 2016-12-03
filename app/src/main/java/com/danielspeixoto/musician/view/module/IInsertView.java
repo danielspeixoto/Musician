@@ -7,4 +7,6 @@ public interface IInsertView<T> {
 
     void onObjectInserted(T t);
 
+    void onError(String message);
+
 }

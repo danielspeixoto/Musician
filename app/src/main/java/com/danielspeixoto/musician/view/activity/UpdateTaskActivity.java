@@ -1,7 +1,6 @@
 package com.danielspeixoto.musician.view.activity;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.presenter.UpdateTaskPresenter;
@@ -27,8 +26,6 @@ public class UpdateTaskActivity extends TaskDataActivity implements IUpdateView<
     public void saveTask() {
         super.saveTask();
         new UpdateTaskPresenter(this, this).update(task);
-        mAdapter.updateToDos();
-        finish();
     }
 
     public void fillData(Task task) {
@@ -38,6 +35,13 @@ public class UpdateTaskActivity extends TaskDataActivity implements IUpdateView<
 
     @Override
     public void onObjectUpdated() {
-        Toast.makeText(getApplicationContext(), "Task has been updated", Toast.LENGTH_LONG).show();
+        showMessage("Task has been updated");
+        mAdapter.updateToDos();
+        finish();
+    }
+
+    @Override
+    public void onError(String message) {
+        showMessage(message);
     }
 }

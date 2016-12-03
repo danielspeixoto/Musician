@@ -30,7 +30,7 @@ public class Song extends Contract.SongColumns {
         name = cursor.getColumnIndex(NAME) != -1 ?
                 cursor.getString(cursor.getColumnIndex(NAME)) : null;
         artist = cursor.getColumnIndex(ARTIST) != -1 ?
-                cursor.getString(cursor.getColumnIndex(ARTIST)) : null;
+                cursor.getString(cursor.getColumnIndex(ARTIST)) : "Unknown artist";
         comments = cursor.getColumnIndex(COMMENTS) != -1 ?
                 cursor.getString(cursor.getColumnIndex(COMMENTS)) : null;
         level = cursor.getColumnIndex(LEVEL) != -1 ?

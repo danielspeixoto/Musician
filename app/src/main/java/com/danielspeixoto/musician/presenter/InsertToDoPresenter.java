@@ -6,6 +6,7 @@ import com.danielspeixoto.musician.model.InsertToDoModel;
 import com.danielspeixoto.musician.model.module.IInsertModel;
 import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.module.IInsertPresenter;
+import com.danielspeixoto.musician.util.Auth;
 import com.danielspeixoto.musician.view.module.IInsertView;
 
 /**
@@ -25,7 +26,9 @@ public class InsertToDoPresenter implements IInsertPresenter<ToDo> {
     @Override
     public void insert(ToDo toDo) {
         mTodo = toDo;
-        mInsertModel.insert(toDo);
+        if (Auth.verifyItem(toDo)) {
+            mInsertModel.insert(toDo);
+        }
     }
 
     @Override

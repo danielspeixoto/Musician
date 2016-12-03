@@ -6,6 +6,7 @@ import com.danielspeixoto.musician.model.InsertSongModel;
 import com.danielspeixoto.musician.model.module.IInsertModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.IInsertPresenter;
+import com.danielspeixoto.musician.util.Auth;
 import com.danielspeixoto.musician.view.module.IInsertView;
 
 /**
@@ -13,11 +14,11 @@ import com.danielspeixoto.musician.view.module.IInsertView;
  */
 public class InsertSongPresenter implements IInsertPresenter<Song> {
 
-    private final IInsertView mInsertView;
-    private final IInsertModel mInsertModel;
+    private final IInsertView<Song> mInsertView;
+    private final IInsertModel<Song> mInsertModel;
     private Song mSong;
 
-    public InsertSongPresenter(IInsertView mInsertView, Context mContext) {
+    public InsertSongPresenter(IInsertView<Song> mInsertView, Context mContext) {
         this.mInsertView = mInsertView;
         this.mInsertModel = new InsertSongModel(this, mContext);
     }
@@ -25,7 +26,11 @@ public class InsertSongPresenter implements IInsertPresenter<Song> {
     @Override
     public void insert(Song song) {
         mSong = song;
-        mInsertModel.insert(song);
+        if (Auth.verifyItem(song)) {
+            mInsertModel.insert(song);
+        } else {
+            mInsertView.onError("Must have a name");
+        }
     }
 
     @Override
