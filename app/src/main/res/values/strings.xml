@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Musician</string>
+    <string name="dialog_edit">Edit</string>
+    <string name="dialog_delete">Delete</string>
 </resources>

@@ -3,24 +3,32 @@ package com.danielspeixoto.musician.presenter;
 import android.content.Context;
 
 import com.danielspeixoto.musician.model.UpdateSongModel;
-import com.danielspeixoto.musician.model.module.IUpdateSongModel;
+import com.danielspeixoto.musician.model.module.IUpdateModel;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.module.IUpdateSongPresenter;
+import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class UpdateSongPresenter implements IUpdateSongPresenter {
+public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
-    private IUpdateSongModel mUpdateSongModel;
+    private final IUpdateView mUpdateView;
+    private final IUpdateModel mUpdateModel;
 
-    public UpdateSongPresenter(Context mContext) {
-        this.mUpdateSongModel = new UpdateSongModel(mContext);
+    public UpdateSongPresenter(IUpdateView mUpdateView, Context mContext) {
+        this.mUpdateView = mUpdateView;
+        this.mUpdateModel = new UpdateSongModel(this, mContext);
     }
 
     @Override
-    public void updateSong(Song song) {
-        mUpdateSongModel.updateSong(song);
+    public void update(Song song) {
+        mUpdateModel.update(song);
     }
-    
+
+    @Override
+    public void onUpdated() {
+        mUpdateView.onObjectUpdated();
+    }
+
 }

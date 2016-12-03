@@ -3,7 +3,6 @@ package com.danielspeixoto.musician.view.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.danielspeixoto.musician.R;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by danielspeixoto on 13/11/16.
@@ -26,7 +27,7 @@ public class MainViewPager extends Fragment {
         View view = inflater.inflate(R.layout.main_viewpager, container);
         final SongListFragment songListFragment = new SongListFragment();
         final TaskListFragment taskListFragment = new TaskListFragment();
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        ViewPager viewPager = ButterKnife.findById(view, R.id.viewPager);
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -43,10 +44,6 @@ public class MainViewPager extends Fragment {
                 return 2;
             }
         });
-
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager);
-
         return view;
     }
 }

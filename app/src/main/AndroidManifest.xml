@@ -1,5 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.danielspeixoto.musician">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +32,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.danielspeixoto.musician.view.activity.MainActivity" />
         </activity>
+        <activity
+            android:name=".view.activity.SongInfoActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.WatchVideoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".view.activity.InsertTaskActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.UpdateTaskActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.TaskInfoActivity"></activity>
     </application>
 
 </manifest>

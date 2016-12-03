@@ -15,6 +15,8 @@ public interface Contract {
         public static final String LEVEL = "level";
         public static final String BPM = "bpm";
         public static final String BEATS_PER_BAR = "beatsPerBar";
+        public static final String VIDEO_PATH = "videoPath";
+
     }
 
     class TaskColumns implements BaseColumns {

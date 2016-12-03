@@ -12,13 +12,14 @@ import lombok.Data;
 @Data
 public class Song extends Contract.SongColumns {
 
-    private int id;
+    private long id;
     private String name;
     private String artist;
     private String comments;
     private int level;
     private int bpm;
     private String beatsPerBar;
+    private String videoPath;
 
     public Song() {
     }
@@ -38,6 +39,8 @@ public class Song extends Contract.SongColumns {
                 cursor.getInt(cursor.getColumnIndex(BPM)) : 0;
         beatsPerBar = cursor.getColumnIndex(BEATS_PER_BAR) != -1 ?
                 cursor.getString(cursor.getColumnIndex(BEATS_PER_BAR)) : null;
+        videoPath = cursor.getColumnIndex(VIDEO_PATH) != -1 ?
+                cursor.getString(cursor.getColumnIndex(VIDEO_PATH)) : null;
 
     }
 }
