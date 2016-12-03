@@ -19,7 +19,6 @@ public class DeleteSongModel implements IDeleteModel<Song> {
     public DeleteSongModel(IDeletePresenter mDeletePresenter, Context mContext) {
         this.mDeletePresenter = mDeletePresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
-
     }
 
     @Override

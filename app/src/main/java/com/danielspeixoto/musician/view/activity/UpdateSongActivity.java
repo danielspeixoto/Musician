@@ -3,7 +3,6 @@ package com.danielspeixoto.musician.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.SelectSongPresenter;
@@ -27,7 +26,6 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
     public void saveSong(View view) {
         super.saveSong(view);
         new UpdateSongPresenter(this, this).update(song);
-        finish();
     }
 
     @Override
@@ -38,7 +36,7 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
         beatsPerBarEdit.setText(song.getBeatsPerBar());
         commentsEdit.setText(song.getComments());
         levelSeek.setProgress(song.getLevel());
-        if (song.getBpm() != 0) {
+        if (song.getBpm() == 0) {
             bpmEdit.setText(Integer.toString(song.getBpm()));
         }
         if (song.getVideoPath() != null) {
@@ -48,6 +46,12 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
 
     @Override
     public void onObjectUpdated() {
-        Toast.makeText(getApplicationContext(), "Song has been updated", Toast.LENGTH_LONG).show();
+        showMessage("Song has been updated");
+        finish();
+    }
+
+    @Override
+    public void onError(String message) {
+        showMessage(message);
     }
 }

@@ -6,6 +6,7 @@ import com.danielspeixoto.musician.model.UpdateSongModel;
 import com.danielspeixoto.musician.model.module.IUpdateModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
+import com.danielspeixoto.musician.util.Auth;
 import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
@@ -23,7 +24,11 @@ public class UpdateSongPresenter implements IUpdatePresenter<Song> {
 
     @Override
     public void update(Song song) {
-        mUpdateModel.update(song);
+        if (Auth.verifyItem(song)) {
+            mUpdateModel.update(song);
+        } else {
+            mUpdateView.onError("Must have a name");
+        }
     }
 
     @Override
