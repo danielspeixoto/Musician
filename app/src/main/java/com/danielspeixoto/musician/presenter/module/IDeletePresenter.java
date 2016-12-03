@@ -5,7 +5,7 @@ package com.danielspeixoto.musician.presenter.module;
  */
 public interface IDeletePresenter<T> {
 
-    void delete(int id);
+    void delete(long id);
 
     void onDeleted();
 

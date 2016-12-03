@@ -3,7 +3,6 @@ package com.danielspeixoto.musician.view.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -45,8 +44,6 @@ public class MainViewPager extends Fragment {
                 return 2;
             }
         });
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager);
         return view;
     }
 }

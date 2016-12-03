@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.ToDo;
+import com.danielspeixoto.musician.presenter.DeleteToDoPresenter;
 import com.danielspeixoto.musician.presenter.GetRelatedToDosPresenter;
 import com.danielspeixoto.musician.presenter.InsertToDoPresenter;
 import com.danielspeixoto.musician.presenter.UpdateToDoPresenter;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
+import com.danielspeixoto.musician.view.module.IDeleteItemView;
 import com.danielspeixoto.musician.view.module.IInsertView;
 import com.danielspeixoto.musician.view.module.IUpdateView;
 import com.danielspeixoto.musician.view.recycler.holder.ToDoHolder;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
  * Created by danielspeixoto on 20/11/16.
  */
 public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInsertView<ToDo>,
-        IUpdateView {
+        IUpdateView, IDeleteItemView<ToDo> {
 
     public ToDoRecyclerAdapter(AppCompatActivity activity) {
         super(activity);
@@ -41,6 +43,14 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInse
     public void newItem(ToDo toDo) {
         toDo.setTaskId(relationId);
         new InsertToDoPresenter(this, getActivity()).insert(toDo);
+    }
+
+    public void removeItem(long id, int index) {
+        data.remove(index);
+        new Thread(() -> {
+            new DeleteToDoPresenter(this, getActivity()).delete(id);
+        }).run();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -68,5 +78,10 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInse
 
     @Override
     public void onObjectUpdated() {
+    }
+
+    @Override
+    public void onItemDeleted() {
+
     }
 }

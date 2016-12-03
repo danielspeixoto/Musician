@@ -34,18 +34,18 @@ public class TaskDataActivity extends BaseActivity {
         setContentView(R.layout.activity_task_data);
         ButterKnife.bind(this);
         mAdapter = new ToDoRecyclerAdapter(this);
+        toDoEdit.setOnKeyListener((v, keyCode, event) -> {
+            // add ToDos when enter is pressed
+            ToDo toDo = new ToDo(toDoEdit.getText().toString());
+            mAdapter.newItem(toDo);
+            toDoEdit.setText(EMPTY_STRING);
+            return true;
+        });
         toDoList.setAdapter(mAdapter);
         toDoList.setLayoutManager(new LinearLayoutManager(this));
         if (savedInstanceState != null) {
             mAdapter.setData(savedInstanceState.getParcelableArrayList(SAVED_TO_DOS));
         }
-    }
-
-    @OnClick(R.id.addToDoButton)
-    public void addToDo() {
-        ToDo toDo = new ToDo(toDoEdit.getText().toString());
-        mAdapter.newItem(toDo);
-        toDoEdit.setText(EMPTY_STRING);
     }
 
     @OnClick(R.id.saveButton)

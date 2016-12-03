@@ -45,7 +45,7 @@ public abstract class SongDataActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_song);
+        setContentView(R.layout.activity_song_data);
         ButterKnife.bind(this);
         videoView.setOnPreparedListener((mp) -> mp.setVolume(0, 0));
         videoView.setOnCompletionListener((mp) -> mp.start());

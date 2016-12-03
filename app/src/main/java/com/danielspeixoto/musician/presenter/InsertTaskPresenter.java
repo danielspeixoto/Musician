@@ -12,9 +12,9 @@ import com.danielspeixoto.musician.view.module.IInsertView;
 /**
  * Created by danielspeixoto on 20/11/16.
  */
-public class InsertTaskPresenter implements IInsertPresenter<Task> {
+public class InsertTaskPresenter implements IInsertPresenter<Task>, IInsertView<ToDo> {
 
-    private final IInsertView mInsertView;
+    private final IInsertView<Task> mInsertView;
     private Task mTask;
     private IInsertModel<Task> mInsertModel;
     private IInsertPresenter<ToDo> mInsertToDoPresenter;
@@ -22,7 +22,7 @@ public class InsertTaskPresenter implements IInsertPresenter<Task> {
     public InsertTaskPresenter(IInsertView mInsertView, Context mContext) {
         this.mInsertView = mInsertView;
         this.mInsertModel = new InsertTaskModel(this, mContext);
-        this.mInsertToDoPresenter = new InsertToDoPresenter(mInsertView, mContext);
+        this.mInsertToDoPresenter = new InsertToDoPresenter(this, mContext);
     }
 
     @Override
@@ -38,5 +38,10 @@ public class InsertTaskPresenter implements IInsertPresenter<Task> {
             mInsertToDoPresenter.insert(toDo);
         }
         mInsertView.onObjectInserted(mTask);
+    }
+
+    @Override
+    public void onObjectInserted(ToDo toDo) {
+
     }
 }

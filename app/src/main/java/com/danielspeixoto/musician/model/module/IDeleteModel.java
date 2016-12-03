@@ -5,6 +5,6 @@ package com.danielspeixoto.musician.model.module;
  */
 public interface IDeleteModel<T> {
 
-    void delete(int id);
+    void delete(long id);
 
 }

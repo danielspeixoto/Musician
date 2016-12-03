@@ -32,4 +32,9 @@ public class ToDoHolder extends BaseHolder {
     public void checkboxClicked() {
         ((ToDo) mAdapter.getData().get(index)).setFinished(checkBox.isChecked());
     }
+
+    @OnClick(R.id.removeToDo)
+    public void removeToDo() {
+        ((ToDoRecyclerAdapter) mAdapter).removeItem(id, index);
+    }
 }

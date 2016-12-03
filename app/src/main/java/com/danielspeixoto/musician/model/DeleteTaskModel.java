@@ -22,11 +22,11 @@ public class DeleteTaskModel implements IDeleteModel<Task> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         SQLiteDatabase db = mDBHandler.getWritableDatabase();
         db.delete(Task.TABLE,
                 Task._ID + " = ?",
-                new String[]{Integer.toString(id)}
+                new String[]{Long.toString(id)}
         );
         mDeletePresenter.onDeleted();
     }

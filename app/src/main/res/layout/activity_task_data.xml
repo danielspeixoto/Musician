@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -56,21 +57,10 @@
                 android:id="@+id/toDoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/addToDoButton"
                 android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/addToDoButton"
-                android:layout_toStartOf="@+id/addToDoButton"
+                android:layout_below="@+id/textView"
                 android:background="@android:drawable/editbox_background_normal"
                 android:ems="10" />
-
-            <Button
-                android:id="@+id/addToDoButton"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/textView"
-                android:text="+" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/toDoList"
@@ -79,15 +69,16 @@
                 android:layout_below="@+id/toDoEdit"
                 android:layout_centerHorizontal="true" />
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/toDoList"
-                android:text="Save" />
-
         </RelativeLayout>
     </ScrollView>
 
-</RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:fabSize="normal" />
+
+</android.support.design.widget.CoordinatorLayout>

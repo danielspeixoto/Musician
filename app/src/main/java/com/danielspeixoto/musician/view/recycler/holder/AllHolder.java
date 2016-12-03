@@ -17,7 +17,7 @@ public abstract class AllHolder extends BaseHolder implements IDeleteItemView {
     }
 
     @Override
-    public void refreshData() {
+    public void onItemDeleted() {
         mAdapter.refreshData();
     }
 

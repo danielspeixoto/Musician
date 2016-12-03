@@ -22,12 +22,12 @@ public class DeleteSongPresenter implements IDeletePresenter<Song> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         mDeleteModel.delete(id);
     }
 
     @Override
     public void onDeleted() {
-        mDeleteItemView.refreshData();
+        mDeleteItemView.onItemDeleted();
     }
 }

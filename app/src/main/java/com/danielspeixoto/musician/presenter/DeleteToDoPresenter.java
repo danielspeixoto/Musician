@@ -2,23 +2,23 @@ package com.danielspeixoto.musician.presenter;
 
 import android.content.Context;
 
-import com.danielspeixoto.musician.model.DeleteTaskModel;
+import com.danielspeixoto.musician.model.DeleteToDoModel;
 import com.danielspeixoto.musician.model.module.IDeleteModel;
-import com.danielspeixoto.musician.model.pojo.Task;
+import com.danielspeixoto.musician.model.pojo.ToDo;
 import com.danielspeixoto.musician.presenter.module.IDeletePresenter;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 
 /**
- * Created by danielspeixoto on 21/11/16.
+ * Created by danielspeixoto on 03/12/16.
  */
-public class DeleteTaskPresenter implements IDeletePresenter<Task> {
+public class DeleteToDoPresenter implements IDeletePresenter<ToDo> {
 
     private final IDeleteItemView mDeleteItemView;
     private IDeleteModel mDeleteModel;
 
-    public DeleteTaskPresenter(IDeleteItemView mDeleteItemView, Context mContext) {
+    public DeleteToDoPresenter(IDeleteItemView mDeleteItemView, Context mContext) {
         this.mDeleteItemView = mDeleteItemView;
-        this.mDeleteModel = new DeleteTaskModel(this, mContext);
+        this.mDeleteModel = new DeleteToDoModel(this, mContext);
     }
 
     @Override
