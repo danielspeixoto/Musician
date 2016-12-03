@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Song extends Contract.SongColumns {
 
-    private int id;
+    private long id;
     private String name;
     private String artist;
     private String comments;

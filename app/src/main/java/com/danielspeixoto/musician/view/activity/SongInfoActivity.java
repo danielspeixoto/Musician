@@ -11,7 +11,7 @@ import android.widget.VideoView;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.SelectSongPresenter;
-import com.danielspeixoto.musician.view.module.ISelectSongView;
+import com.danielspeixoto.musician.view.module.ISelectView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * Created by danielspeixoto on 19/11/16.
  */
-public class SongInfoActivity extends BaseActivity implements ISelectSongView {
+public class SongInfoActivity extends BaseActivity implements ISelectView<Song> {
 
     @BindView(R.id.nameText)
     TextView nameText;
@@ -54,7 +54,7 @@ public class SongInfoActivity extends BaseActivity implements ISelectSongView {
             startActivity(intent);
             return false;
         });
-        new SelectSongPresenter(this, this).selectSong(getIntent().getIntExtra(Song._ID, -1));
+        new SelectSongPresenter(this, this).select(getIntent().getIntExtra(Song._ID, -1));
     }
 
     @Override

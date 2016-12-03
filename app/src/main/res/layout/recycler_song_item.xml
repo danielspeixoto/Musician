@@ -35,10 +35,11 @@
 
     <ImageButton
         android:id="@+id/optionsButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@android:drawable/ic_menu_edit" />
+        android:background="@drawable/ic_more_vert_black_24dp"
+        android:scaleType="centerCrop" />
 </RelativeLayout>

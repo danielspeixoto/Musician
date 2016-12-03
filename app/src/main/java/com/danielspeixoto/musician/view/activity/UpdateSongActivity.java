@@ -3,36 +3,36 @@ package com.danielspeixoto.musician.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.SelectSongPresenter;
 import com.danielspeixoto.musician.presenter.UpdateSongPresenter;
-import com.danielspeixoto.musician.view.module.ISelectSongView;
+import com.danielspeixoto.musician.view.module.ISelectView;
+import com.danielspeixoto.musician.view.module.IUpdateView;
 
 /**
  * Created by danielspeixoto on 13/11/16.
  */
-public class UpdateSongActivity extends SongDataActivity implements ISelectSongView {
-
-    private int id;
+public class UpdateSongActivity extends SongDataActivity implements ISelectView<Song>,
+        IUpdateView<Song> {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = getIntent().getIntExtra(Song._ID, 1);
-        new SelectSongPresenter(this, this).selectSong(id);
+        new SelectSongPresenter(this, this).select(getIntent().getIntExtra(Song._ID, 1));
     }
 
     @Override
     public void saveSong(View view) {
         super.saveSong(view);
-        song.setId(id);
-        new UpdateSongPresenter(this, this).updateSong(song);
+        new UpdateSongPresenter(this, this).update(song);
         finish();
     }
 
     @Override
     public void fillData(Song song) {
+        this.song = song;
         nameEdit.setText(song.getName());
         artistEdit.setText(song.getArtist());
         beatsPerBarEdit.setText(song.getBeatsPerBar());
@@ -46,4 +46,8 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectSongV
         }
     }
 
+    @Override
+    public void onObjectUpdated() {
+        Toast.makeText(getApplicationContext(), "Song has been updated", Toast.LENGTH_LONG).show();
+    }
 }

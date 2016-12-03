@@ -3,32 +3,32 @@ package com.danielspeixoto.musician.model;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.danielspeixoto.musician.model.module.IDeleteSongModel;
+import com.danielspeixoto.musician.model.module.IDeleteModel;
 import com.danielspeixoto.musician.model.pojo.Song;
-import com.danielspeixoto.musician.presenter.module.IDeleteSongPresenter;
+import com.danielspeixoto.musician.presenter.module.IDeletePresenter;
 import com.danielspeixoto.musician.util.DatabaseHandler;
 
 /**
  * Created by danielspeixoto on 18/11/16.
  */
-public class DeleteSongModel implements IDeleteSongModel {
+public class DeleteSongModel implements IDeleteModel<Song> {
 
     private final DatabaseHandler mDBHandler;
-    private IDeleteSongPresenter mDeleteSongPresenter;
+    private IDeletePresenter mDeletePresenter;
 
-    public DeleteSongModel(IDeleteSongPresenter mDeleteSongPresenter, Context mContext) {
-        this.mDeleteSongPresenter = mDeleteSongPresenter;
+    public DeleteSongModel(IDeletePresenter mDeletePresenter, Context mContext) {
+        this.mDeletePresenter = mDeletePresenter;
         this.mDBHandler = new DatabaseHandler(mContext);
 
     }
 
     @Override
-    public void deleteSong(int id) {
+    public void delete(long id) {
         SQLiteDatabase db = mDBHandler.getWritableDatabase();
         db.delete(Song.TABLE,
                 Song._ID + " = ?",
-                new String[]{Integer.toString(id)}
+                new String[]{Long.toString(id)}
         );
-        mDeleteSongPresenter.onSongDeleted();
+        mDeletePresenter.onDeleted();
     }
 }

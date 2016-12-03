@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <item
-        app:showAsAction="always"
-        android:title="Add Song"
-        android:id="@+id/editSong"></item>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 </menu>

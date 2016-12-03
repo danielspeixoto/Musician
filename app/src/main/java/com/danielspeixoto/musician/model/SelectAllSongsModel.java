@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.danielspeixoto.musician.model.module.ISelectAllSongsModel;
+import com.danielspeixoto.musician.model.module.ISelectAllModel;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.module.ISelectAllPresenter;
 import com.danielspeixoto.musician.util.DatabaseHandler;
@@ -12,18 +12,18 @@ import com.danielspeixoto.musician.util.DatabaseHandler;
 /**
  * Created by danielspeixoto on 17/11/16.
  */
-public class SelectAllSongsModel implements ISelectAllSongsModel {
+public class SelectAllSongsModel implements ISelectAllModel<Song> {
 
     private final DatabaseHandler mDBHandler;
-    private final ISelectAllPresenter mSelectAllSongsPresenter;
+    private final ISelectAllPresenter<Song> mSelectAllPresenter;
 
-    public SelectAllSongsModel(ISelectAllPresenter mSelectAllSongsPresenter, Context mContext) {
+    public SelectAllSongsModel(ISelectAllPresenter mSelectAllPresenter, Context mContext) {
         this.mDBHandler = new DatabaseHandler(mContext);
-        this.mSelectAllSongsPresenter = mSelectAllSongsPresenter;
+        this.mSelectAllPresenter = mSelectAllPresenter;
     }
 
     @Override
-    public void selectAllSongs() {
+    public void selectAll() {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 Song._ID,
@@ -39,7 +39,7 @@ public class SelectAllSongsModel implements ISelectAllSongsModel {
                 Song.NAME);
         if (cursor.moveToFirst()) {
             do {
-                mSelectAllSongsPresenter.onReceiving(new Song(cursor));
+                mSelectAllPresenter.onReceiving(new Song(cursor));
             } while (cursor.moveToNext());
             cursor.close();
         }
