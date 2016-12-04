@@ -23,7 +23,7 @@ public class InsertTaskActivity extends TaskDataActivity implements IInsertView<
     }
 
     @Override
-    public void onError(String message) {
+    public void onErrorInserting(String message) {
         showMessage(message);
     }
 }

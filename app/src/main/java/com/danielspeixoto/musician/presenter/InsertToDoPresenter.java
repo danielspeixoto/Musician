@@ -28,6 +28,8 @@ public class InsertToDoPresenter implements IInsertPresenter<ToDo> {
         mTodo = toDo;
         if (Auth.verifyItem(toDo)) {
             mInsertModel.insert(toDo);
+        } else {
+            mInsertView.onErrorInserting("Must have at least one character");
         }
     }
 

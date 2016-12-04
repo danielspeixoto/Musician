@@ -23,7 +23,7 @@ public class SelectSongModel implements ISelectModel<Song> {
     }
 
     @Override
-    public void select(int index) {
+    public void select(long id) {
         SQLiteDatabase db = mDBHandler.getReadableDatabase();
         String[] projection = {
                 Song._ID,
@@ -38,7 +38,7 @@ public class SelectSongModel implements ISelectModel<Song> {
         Cursor cursor = db.query(Song.TABLE,
                 projection,
                 Song._ID + " = ?", // Where clause
-                new String[]{Integer.toString(index)}, // Passing the index as an array
+                new String[]{Long.toString(id)}, // Passing the index as an array
                 null,
                 null,
                 null);

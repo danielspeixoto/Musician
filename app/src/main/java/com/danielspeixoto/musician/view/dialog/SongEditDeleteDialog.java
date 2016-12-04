@@ -2,6 +2,8 @@ package com.danielspeixoto.musician.view.dialog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.danielspeixoto.musician.presenter.DeleteSongPresenter;
 import com.danielspeixoto.musician.view.activity.UpdateSongActivity;
@@ -13,8 +15,13 @@ import com.danielspeixoto.musician.view.module.IDeleteItemView;
 public class SongEditDeleteDialog extends BaseEditDeleteDialog {
 
     public SongEditDeleteDialog(IDeleteItemView deleteItemView, Context context) {
-        id = getArguments().getInt(ID);
         mDeletePresenter = new DeleteSongPresenter(deleteItemView, context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        id = getArguments().getLong(ID);
     }
 
     @Override

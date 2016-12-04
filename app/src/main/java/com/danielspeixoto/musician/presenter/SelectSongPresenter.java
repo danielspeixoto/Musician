@@ -22,7 +22,7 @@ public class SelectSongPresenter implements ISelectPresenter<Song> {
     }
 
     @Override
-    public void select(int id) {
+    public void select(long id) {
         mSelectSongModel.select(id);
     }
 

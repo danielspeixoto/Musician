@@ -54,7 +54,7 @@ public class SongInfoActivity extends BaseActivity implements ISelectView<Song> 
             startActivity(intent);
             return false;
         });
-        new SelectSongPresenter(this, this).select(getIntent().getIntExtra(Song._ID, -1));
+        new SelectSongPresenter(this, this).select(getIntent().getLongExtra(Song._ID, -1));
     }
 
     @Override

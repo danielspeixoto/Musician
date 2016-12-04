@@ -39,6 +39,10 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInse
         }).run();
     }
 
+    @Override
+    public void onErrorUpdating(String message) {
+
+    }
 
     public void newItem(ToDo toDo) {
         toDo.setTaskId(relationId);
@@ -56,6 +60,11 @@ public class ToDoRecyclerAdapter extends RelatedRecyclerAdapter implements IInse
     @Override
     public void onObjectInserted(ToDo toDo) {
         super.addItem(toDo);
+    }
+
+    @Override
+    public void onErrorInserting(String message) {
+        showMessage(message);
     }
 
     @Override

@@ -5,6 +5,6 @@ package com.danielspeixoto.musician.model.module;
  */
 public interface ISelectModel<T> {
 
-    void select(int index);
+    void select(long id);
 
 }

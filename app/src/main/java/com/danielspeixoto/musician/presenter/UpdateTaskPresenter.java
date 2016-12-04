@@ -27,7 +27,7 @@ public class UpdateTaskPresenter implements IUpdatePresenter<Task> {
         if (Auth.verifyItem(task)) {
             mUpdateModel.update(task);
         } else {
-            mUpdateView.onError("Must have a name");
+            mUpdateView.onErrorUpdating("Must have a name");
         }
     }
 

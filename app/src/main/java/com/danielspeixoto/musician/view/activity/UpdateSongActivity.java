@@ -19,7 +19,7 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new SelectSongPresenter(this, this).select(getIntent().getIntExtra(Song._ID, 1));
+        new SelectSongPresenter(this, this).select(getIntent().getLongExtra(Song._ID, 1));
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UpdateSongActivity extends SongDataActivity implements ISelectView<
     }
 
     @Override
-    public void onError(String message) {
+    public void onErrorUpdating(String message) {
         showMessage(message);
     }
 }

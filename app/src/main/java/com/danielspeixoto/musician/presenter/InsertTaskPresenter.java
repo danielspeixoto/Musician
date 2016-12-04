@@ -29,7 +29,7 @@ public class InsertTaskPresenter implements IInsertPresenter<Task> {
         if (Auth.verifyItem(task)) {
             mInsertModel.insert(task);
         } else {
-            mInsertView.onError("Must have a name");
+            mInsertView.onErrorInserting("Must have a name");
         }
     }
 

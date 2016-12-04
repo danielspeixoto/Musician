@@ -27,7 +27,7 @@ public class UpdateSongPresenter implements IUpdatePresenter<Song> {
         if (Auth.verifyItem(song)) {
             mUpdateModel.update(song);
         } else {
-            mUpdateView.onError("Must have a name");
+            mUpdateView.onErrorUpdating("Must have a name");
         }
     }
 

@@ -5,7 +5,7 @@ package com.danielspeixoto.musician.presenter.module;
  */
 public interface ISelectPresenter<T> {
 
-    void select(int id);
+    void select(long id);
 
     void onReceived(T t);
 

@@ -41,7 +41,7 @@ public class UpdateTaskActivity extends TaskDataActivity implements IUpdateView<
     }
 
     @Override
-    public void onError(String message) {
+    public void onErrorUpdating(String message) {
         showMessage(message);
     }
 }

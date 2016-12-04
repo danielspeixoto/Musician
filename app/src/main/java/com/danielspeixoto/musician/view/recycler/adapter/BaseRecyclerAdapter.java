@@ -3,6 +3,7 @@ package com.danielspeixoto.musician.view.recycler.adapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.danielspeixoto.musician.view.module.IListView;
 
@@ -44,5 +45,9 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    protected void showMessage(String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }

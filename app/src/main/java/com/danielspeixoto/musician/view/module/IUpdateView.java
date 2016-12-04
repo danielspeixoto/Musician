@@ -7,6 +7,6 @@ public interface IUpdateView<T> {
 
     void onObjectUpdated();
 
-    void onError(String message);
+    void onErrorUpdating(String message);
 
 }

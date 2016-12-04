@@ -29,7 +29,7 @@ public class InsertSongPresenter implements IInsertPresenter<Song> {
         if (Auth.verifyItem(song)) {
             mInsertModel.insert(song);
         } else {
-            mInsertView.onError("Must have a name");
+            mInsertView.onErrorInserting("Must have a name");
         }
     }
 
