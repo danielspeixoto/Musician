@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.recycler.adapter;
+package com.danielspeixoto.musician.view.list.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;

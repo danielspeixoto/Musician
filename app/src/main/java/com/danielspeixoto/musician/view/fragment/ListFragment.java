@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.danielspeixoto.musician.view.recycler.adapter.BaseRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.BaseRecyclerAdapter;
 
 /**
  * Created by danielspeixoto on 13/11/16.

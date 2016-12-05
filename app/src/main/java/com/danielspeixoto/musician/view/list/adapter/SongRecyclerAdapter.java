@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.recycler.adapter;
+package com.danielspeixoto.musician.view.list.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Song;
 import com.danielspeixoto.musician.presenter.AllSongsPresenter;
-import com.danielspeixoto.musician.view.recycler.holder.SongHolder;
+import com.danielspeixoto.musician.view.list.holder.SongHolder;
 
 /**
  * Created by danielspeixoto on 14/11/16.

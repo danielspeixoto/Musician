@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Task;
-import com.danielspeixoto.musician.view.recycler.adapter.ToDoRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.ToDoRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

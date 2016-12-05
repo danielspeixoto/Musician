@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.view.activity.InsertTaskActivity;
-import com.danielspeixoto.musician.view.recycler.adapter.TaskRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.TaskRecyclerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

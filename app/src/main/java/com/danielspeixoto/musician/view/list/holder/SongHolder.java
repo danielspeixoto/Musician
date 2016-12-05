@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.recycler.holder;
+package com.danielspeixoto.musician.view.list.holder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,9 @@ import android.widget.TextView;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.view.activity.SongInfoActivity;
 import com.danielspeixoto.musician.view.dialog.SongEditDeleteDialog;
-import com.danielspeixoto.musician.view.recycler.adapter.BaseRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.BaseRecyclerAdapter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lombok.Getter;
 
@@ -29,7 +28,6 @@ public class SongHolder extends AllHolder {
 
     public SongHolder(View itemView, BaseRecyclerAdapter mAdapter) {
         super(itemView, mAdapter);
-        ButterKnife.bind(this, itemView);
     }
 
     @OnClick(R.id.itemLayout)

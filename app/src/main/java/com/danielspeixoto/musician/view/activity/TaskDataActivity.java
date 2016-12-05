@@ -8,13 +8,13 @@ import android.widget.EditText;
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.model.pojo.Task;
 import com.danielspeixoto.musician.model.pojo.ToDo;
-import com.danielspeixoto.musician.view.recycler.adapter.ToDoRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.ToDoRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TaskDataActivity extends BaseActivity {
+public abstract class TaskDataActivity extends BaseActivity {
 
     private static final String SAVED_TO_DOS = "savedToDos";
     Task task = new Task();

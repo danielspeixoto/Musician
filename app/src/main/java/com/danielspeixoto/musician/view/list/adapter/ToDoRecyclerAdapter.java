@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.recycler.adapter;
+package com.danielspeixoto.musician.view.list.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +12,10 @@ import com.danielspeixoto.musician.presenter.GetRelatedToDosPresenter;
 import com.danielspeixoto.musician.presenter.InsertToDoPresenter;
 import com.danielspeixoto.musician.presenter.UpdateToDoPresenter;
 import com.danielspeixoto.musician.presenter.module.IUpdatePresenter;
+import com.danielspeixoto.musician.view.list.holder.ToDoHolder;
 import com.danielspeixoto.musician.view.module.IDeleteItemView;
 import com.danielspeixoto.musician.view.module.IInsertView;
 import com.danielspeixoto.musician.view.module.IUpdateView;
-import com.danielspeixoto.musician.view.recycler.holder.ToDoHolder;
 
 import java.util.ArrayList;
 

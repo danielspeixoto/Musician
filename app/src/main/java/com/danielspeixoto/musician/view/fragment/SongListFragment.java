@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.danielspeixoto.musician.R;
 import com.danielspeixoto.musician.view.activity.InsertSongActivity;
-import com.danielspeixoto.musician.view.recycler.adapter.SongRecyclerAdapter;
+import com.danielspeixoto.musician.view.list.adapter.SongRecyclerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

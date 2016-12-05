@@ -1,4 +1,4 @@
-package com.danielspeixoto.musician.view.recycler.adapter;
+package com.danielspeixoto.musician.view.list.adapter;
 
 import android.support.v7.app.AppCompatActivity;
 
@@ -23,6 +23,5 @@ public abstract class RelatedRecyclerAdapter extends BaseRecyclerAdapter {
     public void refreshData() {
         data.clear();
         mGetRelatedPresenter.getRelated(relationId);
-        notifyDataSetChanged();
     }
 }

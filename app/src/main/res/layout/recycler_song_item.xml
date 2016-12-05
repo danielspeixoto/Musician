@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/itemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/songName"
